@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">I Have Been</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="HardCluePlaceHolderText">Hard Clue</string>
+    <string name="MediumCluePlaceHolderText">Medium Clue</string>
+    <string name="Easy1CluePlaceHolderText">Easy Clue 1</string>
+    <string name="Easy2CluePlaceHolderText">Easy Clue 2</string>
+    <string name="GiveAwayCluePlaceHolderText">Give Away Clue</string>
+    <string name="IHaveBeen">I Have Been:</string>
+    <string name="HintTextPlaceHolder">Type Your Guess Here</string>
+</resources>

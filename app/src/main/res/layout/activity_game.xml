@@ -1,0 +1,110 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#0099cc" tools:context=".GameActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView android:id="@+id/fullscreen_content" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
+        android:textStyle="bold" android:textSize="50sp" android:gravity="center"/>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay" android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gameTimer"
+            android:layout_gravity="center_horizontal|top"
+            android:focusable="false"
+            android:max="90"
+            android:layout_marginTop="5dp"
+            android:progressBackgroundTint="@android:color/holo_orange_dark"
+            android:progressTint="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="@string/IHaveBeen"
+            android:id="@+id/iHaveBeenTextView"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:id="@+id/gameClueLinearLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hardClueTextView"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/HardCluePlaceHolderText"
+                android:visibility="visible"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mediumClueTextView"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/MediumCluePlaceHolderText"
+                android:visibility="invisible"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/easy1ClueTextView"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/Easy1CluePlaceHolderText"
+                android:visibility="invisible"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/easy2ClueTextView"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/Easy2CluePlaceHolderText"
+                android:visibility="invisible"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/giveAwayClueTextView"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/GiveAwayCluePlaceHolderText"
+                android:visibility="invisible"
+                android:textAlignment="center" />
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userGuessBox"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/HintTextPlaceHolder"
+                android:layout_marginTop="15dp" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
