@@ -1,15 +1,15 @@
 BEGIN TRANSACTION;
 CREATE TABLE "M_Clue" (
 	`Clue_ID`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`Clue_Text`	TEXT,
+	`MClue`	TEXT,
 	`Actor_ID`	INTEGER,
 	FOREIGN KEY(`Actor_ID`) REFERENCES Actors ( _ID )
 );
 INSERT INTO `M_Clue` VALUES (1,'A pirate Radio DJ',101);
-INSERT INTO `M_Clue` VALUES (2,'An Arms Dealer using flight attendants to smuggle goods',NULL);
+INSERT INTO `M_Clue` VALUES (2,'An Arms Dealer using flight attendants to smuggle goods',102);
 CREATE TABLE "H_Clue" (
 	`Clue_ID`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`Clue_Text`	TEXT,
+	`HClue`	TEXT,
 	`Actor_ID`	INTEGER,
 	FOREIGN KEY(`Actor_ID`) REFERENCES "Actors" ( _ID )
 );
@@ -17,7 +17,7 @@ INSERT INTO `H_Clue` VALUES (1,'A skateboarding vigilante',101);
 INSERT INTO `H_Clue` VALUES (2,'A Boxing Promoter',102);
 CREATE TABLE "GA_Clue" (
 	`Clue_ID`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`Clue_Text`	TEXT,
+	`GAClue`	TEXT,
 	`Actor_ID`	INTEGER,
 	FOREIGN KEY(`Actor_ID`) REFERENCES Actors ( _ID )
 );
@@ -25,7 +25,7 @@ INSERT INTO `GA_Clue` VALUES (1,'A Naval Captian chasing after a stolen Nuke',10
 INSERT INTO `GA_Clue` VALUES (2,'I''m tired of these motha fucking snakes on this motha fucking plane',102);
 CREATE TABLE "E2_Clue" (
 	`Clue_ID`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`Clue_Text`	TEXT,
+	`E2Clue`	TEXT,
 	`Actor_ID`	INTEGER,
 	FOREIGN KEY(`Actor_ID`) REFERENCES Actors ( _ID )
 );
@@ -33,7 +33,7 @@ INSERT INTO `E2_Clue` VALUES (1,'I have killed the popular kids with my girlfrie
 INSERT INTO `E2_Clue` VALUES (2,'A Jedi Knight',102);
 CREATE TABLE "E1_Clue" (
 	`Clue_ID`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`Clue_Text`	TEXT,
+	`E1Clue`	TEXT,
 	`Actor_ID`	INTEGER,
 	FOREIGN KEY(`Actor_ID`) REFERENCES Actors ( _ID )
 );
