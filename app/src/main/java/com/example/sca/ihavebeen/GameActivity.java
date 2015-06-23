@@ -4,6 +4,7 @@ import com.example.sca.ihavebeen.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -43,6 +44,8 @@ public class GameActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
+
+    private GameDatabase db;
 
     ProgressBar mProgressBar;
     TextView mHardClue;
@@ -126,6 +129,34 @@ public class GameActivity extends Activity {
 
         mProgressBar.setProgress(0);
 
+        String hardClue = "";
+        String mediumClue = "";
+        String easy1Clue = "";
+        String easy2Clue = "";
+        String giveAwayClue = "";
+
+        db = new GameDatabase(this);
+
+        Cursor cursor = db.getActorsFromDB();
+        try {
+            while (cursor.moveToNext()) {
+                hardClue = cursor.getString(2);
+                mediumClue = cursor.getString(3);
+                easy1Clue = cursor.getString(4);
+                easy2Clue = cursor.getString(5);
+                giveAwayClue = cursor.getString(6);
+            }
+        }
+        finally {
+            cursor.close();
+        }
+    db.close();
+
+    mHardClue.setText(hardClue);
+    mMediumClue.setText(mediumClue);
+    mEasy1Clue.setText(easy1Clue);
+    mEasy2Clue.setText(easy2Clue);
+    mGiveAwayClue.setText(giveAwayClue);
 
         final int totalMsecs = 90 * 1000; // 90 seconds in milli seconds
         int callInterval = 10;
@@ -157,6 +188,9 @@ public class GameActivity extends Activity {
                 Log.d("LOG_tag", ">>>>>>>>> countdown timer on finish");
             }
         }.start();
+
+
+
 
 
         // Upon interacting with UI controls, delay any scheduled hide()

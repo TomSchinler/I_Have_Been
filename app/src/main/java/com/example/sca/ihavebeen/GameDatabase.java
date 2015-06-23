@@ -1,6 +1,7 @@
 package com.example.sca.ihavebeen;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -17,7 +18,21 @@ public class GameDatabase extends SQLiteAssetHelper {
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    public Cursor getActorsFromDB() {
+        SQLiteDatabase db = getReadableDatabase();
 
+        Cursor cursor = db.rawQuery("SELECT Name, HClue, MClue, E1Clue, E2Clue, GAClue " +
+                "FROM Actors, H_Clue, M_Clue, E1_Clue, E2_Clue, GA_Clue" +
+                "WHERE Actors._ID = H_Clue.Actor_ID" +
+                "WHERE Actors._ID = M_Clue.Actor_ID" +
+                "WHERE Actors._ID = E1_Clue.Actor_ID" +
+                "WHERE Actors._ID = E2_Clue.Actor_ID" +
+                "WHERE Actors._ID = GA_Clue.Actor_ID" +
+                "ORDER BY Random()" +
+                "Limit 1", null);
+
+        return cursor;
+    }
 
 
 
