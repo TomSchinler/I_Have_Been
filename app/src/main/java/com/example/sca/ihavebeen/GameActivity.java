@@ -140,11 +140,11 @@ public class GameActivity extends Activity {
         Cursor cursor = db.getActorsFromDB();
         try {
             while (cursor.moveToNext()) {
-                hardClue = cursor.getString(2);
-                mediumClue = cursor.getString(3);
-                easy1Clue = cursor.getString(4);
-                easy2Clue = cursor.getString(5);
-                giveAwayClue = cursor.getString(6);
+                hardClue = cursor.getString(1);
+                mediumClue = cursor.getString(2);
+                easy1Clue = cursor.getString(3);
+                easy2Clue = cursor.getString(4);
+                giveAwayClue = cursor.getString(5);
             }
         }
         finally {

@@ -11,7 +11,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
  */
 public class GameDatabase extends SQLiteAssetHelper {
 
-    private static final String DATABASE_NAME = "GameDB.sqlite";
+    private static final String DATABASE_NAME = "GameDB.db";
     private static final int DATABASE_VERSION = 1;
 
     public GameDatabase(Context context) {
@@ -19,17 +19,15 @@ public class GameDatabase extends SQLiteAssetHelper {
     }
 
     public Cursor getActorsFromDB() {
+
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT Name, HClue, MClue, E1Clue, E2Clue, GAClue " +
-                "FROM Actors, H_Clue, M_Clue, E1_Clue, E2_Clue, GA_Clue" +
-                "WHERE Actors._ID = H_Clue.Actor_ID" +
-                "WHERE Actors._ID = M_Clue.Actor_ID" +
-                "WHERE Actors._ID = E1_Clue.Actor_ID" +
-                "WHERE Actors._ID = E2_Clue.Actor_ID" +
-                "WHERE Actors._ID = GA_Clue.Actor_ID" +
-                "ORDER BY Random()" +
-                "Limit 1", null);
+        //Raw Query for database retrieval
+        Cursor cursor = db.rawQuery("SELECT Name, HClue, MClue, E1Clue, E2Clue, GAClue\n" +
+                "FROM Actors, H_Clue, M_Clue, E1_Clue, E2_Clue, GA_Clue\n" +
+                "WHERE Actors._ID = H_Clue.Actor_ID AND Actors._ID = M_Clue.Actor_ID\n" +
+                "AND Actors._ID = E1_Clue.Actor_ID AND Actors._ID = E2_Clue.Actor_ID\n" +
+                "AND Actors._ID = GA_Clue.Actor_ID ORDER BY Random() Limit 1", null);
 
         return cursor;
     }
