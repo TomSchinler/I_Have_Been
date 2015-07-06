@@ -10,4 +10,14 @@
     <string name="GiveAwayCluePlaceHolderText">Give Away Clue</string>
     <string name="IHaveBeen">I Have Been:</string>
     <string name="HintTextPlaceHolder">Type Your Guess Here</string>
+
+
+
+
+
+
+
+    <string-array name="guessAC">Christian Slater, Samual L. Jackson</string-array>
+
+
 </resources>
