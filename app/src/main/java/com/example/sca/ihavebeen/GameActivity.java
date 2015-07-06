@@ -199,10 +199,12 @@ public class GameActivity extends Activity {
                 Context context = getApplicationContext();
 
                 if(answer.equalsIgnoreCase(actorName)) {
+                    //Toast is for testing only... Create Intent for next activity if correct
                     Toast toast = Toast.makeText(context, "That's Right", Toast.LENGTH_LONG);
                     toast.show();
                 }
                 else {
+                    //toast is for testing only
                     Toast toast = Toast.makeText(context, "You Done Fucked Up A-Aron", Toast.LENGTH_LONG);
                     toast.show();
                 }
