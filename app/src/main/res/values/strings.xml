@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">I Have Been</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+
     <string name="HardCluePlaceHolderText">Hard Clue</string>
     <string name="MediumCluePlaceHolderText">Medium Clue</string>
     <string name="Easy1CluePlaceHolderText">Easy Clue 1</string>
@@ -10,6 +9,21 @@
     <string name="GiveAwayCluePlaceHolderText">Give Away Clue</string>
     <string name="IHaveBeen">I Have Been:</string>
     <string name="HintTextPlaceHolder">Type Your Guess Here</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_game_start">GameStart</string>
+    <string name="title_activity_next_round">NextRound</string>
+    <string name="title_activity_results">Results</string>
+    <string name="email_prompt">E-Mail</string>
+    <string name="Password">Password</string>
+    <string name="Log_in">Log In</string>
+    <string name="Sign_Up">Sign Up</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_log_in">LogIn</string>
+    <string name="Logo_Text">Large Text</string>
+    <string name="Email">E-Mail</string>
 
 
 
@@ -18,15 +32,7 @@
 
 
     <string-array name="guessAC">Christian Slater, Samual L. Jackson</string-array>
-    <string name="title_activity_user_profile">UserProfileActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="title_activity_game_start">GameStart</string>
-
-    <string name="title_activity_next_round">NextRound</string>
-    <string name="title_activity_results">Results</string>
 
 
 </resources>
