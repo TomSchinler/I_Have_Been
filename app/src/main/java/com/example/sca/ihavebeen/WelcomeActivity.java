@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 
 public class WelcomeActivity extends ActionBarActivity {
@@ -19,25 +20,30 @@ public class WelcomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        if (ParseUser.getCurrentUser() != null) {
+            Intent intent = new Intent(WelcomeActivity.this, UserProfileActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        else{
+            Button mLogInButton = (Button) findViewById(R.id.logInButton);
+            mLogInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(WelcomeActivity.this, LogInActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        Button mLogInButton = (Button) findViewById(R.id.logInButton);
-        mLogInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, LogInActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button mSignUpButton = (Button) findViewById(R.id.signUpButton);
-        mSignUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-
+            Button mSignUpButton = (Button) findViewById(R.id.signUpButton);
+            mSignUpButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(WelcomeActivity.this, SignUpActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

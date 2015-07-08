@@ -32,7 +32,7 @@ public class LogInActivity extends ActionBarActivity {
         mPasswordField = (EditText)findViewById(R.id.LIPassword);
         mButton = (Button)findViewById(R.id.LIButton);
 
-        
+
         //Log In with Parse on button click
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
