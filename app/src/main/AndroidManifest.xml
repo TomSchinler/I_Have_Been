@@ -18,6 +18,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GameStart"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_game_start"
+            android:parentActivityName=".UserProfileActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sca.ihavebeen.UserProfileActivity" />
+        </activity>
+        <activity
+            android:name=".NextRound"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_next_round"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name=".Results"
+            android:label="@string/title_activity_results"
+            android:parentActivityName=".UserProfileActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sca.ihavebeen.UserProfileActivity" />
+        </activity>
     </application>
 
 </manifest>

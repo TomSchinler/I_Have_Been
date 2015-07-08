@@ -18,6 +18,15 @@
 
 
     <string-array name="guessAC">Christian Slater, Samual L. Jackson</string-array>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_game_start">GameStart</string>
+
+    <string name="title_activity_next_round">NextRound</string>
+    <string name="title_activity_results">Results</string>
 
 
 </resources>
