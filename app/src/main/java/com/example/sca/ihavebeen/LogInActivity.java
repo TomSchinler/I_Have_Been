@@ -3,6 +3,7 @@ package com.example.sca.ihavebeen;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,9 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.parse.LogInCallback;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class LogInActivity extends ActionBarActivity {
@@ -20,6 +24,8 @@ public class LogInActivity extends ActionBarActivity {
     protected EditText mEmailField;
     protected EditText mPasswordField;
     protected Button mButton;
+    protected Button mFBButton;
+    final Collection<String> permissions = new ArrayList<String>();
 
 
     @Override
@@ -31,6 +37,7 @@ public class LogInActivity extends ActionBarActivity {
         mEmailField = (EditText)findViewById(R.id.LIeMail);
         mPasswordField = (EditText)findViewById(R.id.LIPassword);
         mButton = (Button)findViewById(R.id.LIButton);
+        mFBButton = (Button)findViewById(R.id.FbLoginButton);
 
 
         //Log In with Parse on button click
@@ -54,6 +61,26 @@ public class LogInActivity extends ActionBarActivity {
             }
         });
 
+        mFBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                permissions.add("user_status");
+                ParseFacebookUtils.logInWithReadPermissionsInBackground(LogInActivity.this, permissions, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser parseUser, com.parse.ParseException e) {
+                        if (parseUser == null) {
+                            Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+                        } else if (parseUser.isNew()) {
+                            Log.d("MyApp", "User signed up and logged in through Facebook!");
+                        } else {
+                            Log.d("MyApp", "User logged in through Facebook!");
+                        }
+                    }
+
+                });
+            }
+        });
 
     }
 

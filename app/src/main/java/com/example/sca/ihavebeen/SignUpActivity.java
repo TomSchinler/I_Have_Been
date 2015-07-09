@@ -3,6 +3,7 @@ package com.example.sca.ihavebeen;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,10 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import java.security.Permission;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class SignUpActivity extends ActionBarActivity {
@@ -21,7 +27,8 @@ public class SignUpActivity extends ActionBarActivity {
     protected EditText mEmailField;
     protected EditText mPasswordField;
     protected Button mButton;
-
+    protected Button mFBButton;
+    final Collection<String> permissions = new ArrayList<String>();
 
 
     @Override
@@ -33,6 +40,7 @@ public class SignUpActivity extends ActionBarActivity {
         mEmailField = (EditText)findViewById(R.id.SUeMail);
         mPasswordField = (EditText)findViewById(R.id.SUPassword);
         mButton = (Button)findViewById(R.id.SUButton);
+        mFBButton = (Button)findViewById(R.id.FBSignUpButton);
 
         //sign up with Parse on button click
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +69,27 @@ public class SignUpActivity extends ActionBarActivity {
             }
         });
 
+
+        mFBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                permissions.add("user_status");
+                ParseFacebookUtils.logInWithReadPermissionsInBackground(SignUpActivity.this, permissions, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser parseUser, com.parse.ParseException e) {
+                        if (parseUser == null) {
+                            Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+                        } else if (parseUser.isNew()) {
+                            Log.d("MyApp", "User signed up and logged in through Facebook!");
+                        } else {
+                            Log.d("MyApp", "User logged in through Facebook!");
+                        }
+                    }
+
+                });
+            }
+        });
 
 
     }

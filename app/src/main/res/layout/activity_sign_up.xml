@@ -12,10 +12,11 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/SUeMail"
+        android:layout_marginTop="89dp"
+        android:hint="E-Mail"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
-        android:hint="E-Mail" />
+        android:layout_alignLeft="@+id/SUPassword"
+        android:layout_alignStart="@+id/SUPassword" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -23,9 +24,10 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/SUPassword"
-        android:layout_centerVertical="true"
+        android:hint="@string/Password"
+        android:layout_below="@+id/SUeMail"
         android:layout_centerHorizontal="true"
-        android:hint="@string/Password" />
+        android:layout_marginTop="23dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -34,6 +36,17 @@
         android:text="@string/Sign_Up"
         android:id="@+id/SUButton"
         android:layout_below="@+id/SUPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
+        android:layout_centerHorizontal="true" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/FBSignUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="77dp"
+        android:text="Sign Up With Facebook"
+        android:layout_below="@+id/SUButton"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
