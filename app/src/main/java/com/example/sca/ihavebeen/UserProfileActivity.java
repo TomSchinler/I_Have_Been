@@ -15,6 +15,8 @@ import com.parse.ParseUser;
 
 public class UserProfileActivity extends AppCompatActivity {
 
+    private ParseLogic pl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,9 @@ public class UserProfileActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pl = new ParseLogic();
+                pl.NewGameDbCall();
+                pl.newGame();
                 Intent intent = new Intent(UserProfileActivity.this, GameActivity.class);
                 startActivity(intent);
             }

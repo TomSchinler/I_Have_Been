@@ -54,7 +54,7 @@ public class GameActivity extends Activity {
 
     
 
-    private GameDatabase db;
+
 
     //member variables
     ProgressBar mProgressBar;
@@ -117,7 +117,7 @@ public class GameActivity extends Activity {
                             controlsView.setVisibility(visible ? View.VISIBLE : View.GONE);
                         }
 
-                        if (visible && AUTO_HIDE) {
+                        if (visible) {
                             // Schedule a hide().
                             delayedHide(AUTO_HIDE_DELAY_MILLIS);
                         }
@@ -150,10 +150,11 @@ public class GameActivity extends Activity {
 
         //Set AutoComplete Array Adapter
         mGuessAC = getResources().getStringArray(R.array.guessAC);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
                 (this, android.R.layout.select_dialog_item, mGuessAC);
         mUserGuess.setAdapter(adapter);
         mUserGuess.setThreshold(10);
+
 
         String hardClue = "";
         String mediumClue = "";
@@ -162,23 +163,7 @@ public class GameActivity extends Activity {
         String giveAwayClue = "";
         String actorName = "";
 
-        db = new GameDatabase(this);
 
-        Cursor cursor = db.getActorsFromDB();
-        try {
-            while (cursor.moveToNext()) {
-                actorName = cursor.getString(0);
-                hardClue = cursor.getString(1);
-                mediumClue = cursor.getString(2);
-                easy1Clue = cursor.getString(3);
-                easy2Clue = cursor.getString(4);
-                giveAwayClue = cursor.getString(5);
-            }
-        }
-        finally {
-            cursor.close();
-        }
-        db.close();
 
         mHardClue.setText(hardClue);
         mMediumClue.setText(mediumClue);
