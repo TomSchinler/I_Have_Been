@@ -3,6 +3,7 @@ package com.example.sca.ihavebeen;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,13 +23,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 
-public class SignUpActivity extends ActionBarActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     protected EditText mEmailField;
     protected EditText mPasswordField;
     protected Button mButton;
     protected Button mFBButton;
-    final Collection<String> permissions = new ArrayList<String>();
+    final Collection<String> permissions = new ArrayList<>();
 
 
     @Override
@@ -82,8 +83,12 @@ public class SignUpActivity extends ActionBarActivity {
                             Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
                         } else if (parseUser.isNew()) {
                             Log.d("MyApp", "User signed up and logged in through Facebook!");
+                            Intent intent = new Intent(SignUpActivity.this, UserProfileActivity.class);
+                            startActivity(intent);
                         } else {
                             Log.d("MyApp", "User logged in through Facebook!");
+                            Intent intent = new Intent(SignUpActivity.this, UserProfileActivity.class);
+                            startActivity(intent);
                         }
                     }
 
@@ -92,6 +97,12 @@ public class SignUpActivity extends ActionBarActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

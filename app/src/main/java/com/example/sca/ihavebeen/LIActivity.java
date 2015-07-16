@@ -3,29 +3,30 @@ package com.example.sca.ihavebeen;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 
 
-public class LogInActivity extends ActionBarActivity {
+public class LIActivity extends AppCompatActivity {
 
     protected EditText mEmailField;
     protected EditText mPasswordField;
     protected Button mButton;
     protected Button mFBButton;
-    final Collection<String> permissions = new ArrayList<String>();
+    final Collection<String> permissions = new ArrayList<>();
 
 
     @Override
@@ -50,10 +51,10 @@ public class LogInActivity extends ActionBarActivity {
                     @Override
                     public void done(ParseUser parseUser, com.parse.ParseException e) {
                         if (parseUser != null) {
-                            Intent intent = new Intent(LogInActivity.this, UserProfileActivity.class);
+                            Intent intent = new Intent(LIActivity.this, UserProfileActivity.class);
                             startActivity(intent);
                         } else {
-                            // Signup failed. Look at the ParseException to see what happened.
+                            Toast.makeText(LIActivity.this, "Log in did not work", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -66,15 +67,19 @@ public class LogInActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 permissions.add("user_status");
-                ParseFacebookUtils.logInWithReadPermissionsInBackground(LogInActivity.this, permissions, new LogInCallback() {
+                ParseFacebookUtils.logInWithReadPermissionsInBackground(LIActivity.this, permissions, new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, com.parse.ParseException e) {
                         if (parseUser == null) {
                             Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
                         } else if (parseUser.isNew()) {
                             Log.d("MyApp", "User signed up and logged in through Facebook!");
+                            Intent intent = new Intent(LIActivity.this, UserProfileActivity.class);
+                            startActivity(intent);
                         } else {
                             Log.d("MyApp", "User logged in through Facebook!");
+                            Intent intent = new Intent(LIActivity.this, UserProfileActivity.class);
+                            startActivity(intent);
                         }
                     }
 
@@ -82,6 +87,12 @@ public class LogInActivity extends ActionBarActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

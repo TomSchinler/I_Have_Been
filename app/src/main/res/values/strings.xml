@@ -25,11 +25,7 @@
     <string name="Logo_Text">Large Text</string>
     <string name="Email">E-Mail</string>
     <string name="app_id">1614959885456261</string>
-
-
-
-
-
+    <string name="ABLogOut">Log Out</string>
 
 
     <string-array name="guessAC">Christian Slater, Samual L. Jackson</string-array>
