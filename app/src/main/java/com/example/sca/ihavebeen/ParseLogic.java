@@ -1,8 +1,10 @@
 package com.example.sca.ihavebeen;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -10,9 +12,9 @@ import com.parse.ParseUser;
 /**
  * Created by Tom Schinler on 7/16/2015.
  */
-public class ParseLogic extends Application {
+    public class ParseLogic extends Application {
 
-    private GameDatabase db;
+
 
     String hardClue = "";
     String mediumClue = "";
@@ -23,9 +25,8 @@ public class ParseLogic extends Application {
 
 
 
-    public Cursor NewGameDbCall() {
-        db = new GameDatabase(this);
 
+    public Cursor NewGameDbCall(GameDatabase db) {
 
 
         Cursor cursor = db.getActorsFromDB();
@@ -33,6 +34,7 @@ public class ParseLogic extends Application {
 
             while (cursor.moveToNext()) {
                 actorName = cursor.getString(0);
+
                 hardClue = cursor.getString(1);
                 mediumClue = cursor.getString(2);
                 easy1Clue = cursor.getString(3);
@@ -43,15 +45,14 @@ public class ParseLogic extends Application {
             cursor.close();
         }
         db.close();
+
+
         return cursor;
 
     }
 
 
-
-
-
-    public void newGame(){
+    public void newGame() {
         ParseObject game = new ParseObject("Game");
         game.put("Created By", ParseUser.getCurrentUser());
         game.put("Actor Name", actorName);
@@ -60,8 +61,11 @@ public class ParseLogic extends Application {
         game.put("Easy XClue 1", easy1Clue);
         game.put("Easy Clue 2", easy2Clue);
         game.put("Give Away Clue", giveAwayClue);
+        game.saveInBackground();
     }
 
 
-
 }
+
+
+

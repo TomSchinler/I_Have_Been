@@ -15,23 +15,41 @@ import com.parse.ParseUser;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    private ParseLogic pl;
+
+
+    protected ParseLogic pl;
+    GameDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new GameDatabase(this);
+        pl = new ParseLogic();
         setContentView(R.layout.activity_user_profile);
 
-        //Testing start ganme remove when building rest of page
+        //Testing start game remove when building rest of page
         Button button = (Button)findViewById(R.id.testingStartButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pl = new ParseLogic();
-                pl.NewGameDbCall();
-                pl.newGame();
+                pl.NewGameDbCall(db);
+                String hardClue = pl.hardClue;
+                String mediumClue = pl.mediumClue;
+                String easy1Clue = pl.easy1Clue;
+                String easy2Clue = pl.easy2Clue;
+                String giveAwayClue = pl.giveAwayClue;
+                String actorName = pl.actorName;
+
                 Intent intent = new Intent(UserProfileActivity.this, GameActivity.class);
+                intent.putExtra("actorName", actorName);
+                intent.putExtra("hardClue", hardClue);
+                intent.putExtra("mediumClue", mediumClue);
+                intent.putExtra("easy1Clue", easy1Clue);
+                intent.putExtra("easy2Clue", easy2Clue);
+                intent.putExtra("giveAwayClue", giveAwayClue);
                 startActivity(intent);
+
+                pl.newGame();
             }
         });
     }

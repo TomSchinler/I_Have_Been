@@ -6,6 +6,7 @@ import com.facebook.appevents.AppEventsLogger;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,6 +67,8 @@ public class GameActivity extends Activity {
     String mActorName;
     String[] mGuessAC;
     AutoCompleteTextView mUserGuess;
+
+
 
 
 
@@ -148,6 +151,7 @@ public class GameActivity extends Activity {
 
 
 
+
         //Set AutoComplete Array Adapter
         mGuessAC = getResources().getStringArray(R.array.guessAC);
         ArrayAdapter<String> adapter = new ArrayAdapter<>
@@ -156,12 +160,13 @@ public class GameActivity extends Activity {
         mUserGuess.setThreshold(10);
 
 
-        String hardClue = "";
-        String mediumClue = "";
-        String easy1Clue = "";
-        String easy2Clue = "";
-        String giveAwayClue = "";
-        String actorName = "";
+        Intent intent = getIntent();
+        String hardClue = intent.getStringExtra("hardClue");
+        String mediumClue = intent.getStringExtra("mediumClue");
+        String easy1Clue = intent.getStringExtra("easy1Clue");
+        String easy2Clue = intent.getStringExtra("easy2Clue");
+        String giveAwayClue = intent.getStringExtra("giveAwayClue");
+        String actorName = intent.getStringExtra("actorName");
 
 
 
@@ -171,7 +176,7 @@ public class GameActivity extends Activity {
         mEasy2Clue.setText(easy2Clue);
         mGiveAwayClue.setText(giveAwayClue);
         mActorName = actorName;
-        Log.v("actor is", actorName);
+        //Log.v("actor is", actorName);
 
         Button button = (Button)findViewById(R.id.gameSubmitButton);
         button.setOnClickListener(new View.OnClickListener() {

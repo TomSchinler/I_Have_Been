@@ -18,6 +18,8 @@ public class GameDatabase extends SQLiteAssetHelper {
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
+
     public Cursor getActorsFromDB() {
 
         SQLiteDatabase db = getReadableDatabase();
