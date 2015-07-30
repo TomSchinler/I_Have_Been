@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.facebook.appevents.AppEventsLogger;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
@@ -40,6 +41,8 @@ public class UserProfileActivity extends AppCompatActivity {
                 String giveAwayClue = pl.giveAwayClue;
                 String actorName = pl.actorName;
 
+                pl.newGame();
+
                 Intent intent = new Intent(UserProfileActivity.this, GameActivity.class);
                 intent.putExtra("actorName", actorName);
                 intent.putExtra("hardClue", hardClue);
@@ -49,7 +52,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 intent.putExtra("giveAwayClue", giveAwayClue);
                 startActivity(intent);
 
-                pl.newGame();
+
             }
         });
     }

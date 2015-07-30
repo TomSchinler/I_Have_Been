@@ -6,8 +6,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 /**
  * Created by Tom Schinler on 7/16/2015.
@@ -47,20 +49,24 @@ import com.parse.ParseUser;
         db.close();
 
 
+
+
         return cursor;
+
+
 
     }
 
 
     public void newGame() {
         ParseObject game = new ParseObject("Game");
-        game.put("Created By", ParseUser.getCurrentUser());
-        game.put("Actor Name", actorName);
-        game.put("Hard Clue", hardClue);
-        game.put("Medium Clue", mediumClue);
-        game.put("Easy XClue 1", easy1Clue);
-        game.put("Easy Clue 2", easy2Clue);
-        game.put("Give Away Clue", giveAwayClue);
+        game.put("Created_By", ParseUser.getCurrentUser());
+        game.put("Actor_Name", actorName);
+        game.put("Hard_Clue", hardClue);
+        game.put("Medium_Clue", mediumClue);
+        game.put("Easy_Clue_1", easy1Clue);
+        game.put("Easy_Clue_2", easy2Clue);
+        game.put("Give_Away_Clue", giveAwayClue);
         game.saveInBackground();
     }
 
