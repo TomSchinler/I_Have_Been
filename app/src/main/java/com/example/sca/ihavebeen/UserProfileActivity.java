@@ -43,6 +43,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 pl.newGame();
 
+                //intent for starting game
                 Intent intent = new Intent(UserProfileActivity.this, GameActivity.class);
                 intent.putExtra("actorName", actorName);
                 intent.putExtra("hardClue", hardClue);
@@ -87,6 +88,8 @@ public class UserProfileActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        //create the logout button in action bar
         switch (item.getItemId()){
             case R.id.logoutButton:
                 ParseUser.logOut();

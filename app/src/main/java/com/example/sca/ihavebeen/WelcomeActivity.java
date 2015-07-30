@@ -19,12 +19,14 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        // If user already exists and is signed in, skip this and goto UserProfile
         if (ParseUser.getCurrentUser() != null) {
             Intent intent = new Intent(WelcomeActivity.this, UserProfileActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
         else{
+            //Log in
             Button mLogInButton = (Button) findViewById(R.id.logInButton);
             mLogInButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -34,6 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             });
 
+            // Sign Up
             Button mSignUpButton = (Button) findViewById(R.id.signUpButton);
             mSignUpButton.setOnClickListener(new View.OnClickListener() {
                 @Override

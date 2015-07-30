@@ -27,7 +27,7 @@ import com.parse.SaveCallback;
 
 
 
-
+    //Parse Logic to handle the db call and distribute data
     public Cursor NewGameDbCall(GameDatabase db) {
 
 
@@ -47,17 +47,11 @@ import com.parse.SaveCallback;
             cursor.close();
         }
         db.close();
-
-
-
-
         return cursor;
-
-
-
     }
 
 
+    // Create ParseObject that for individual games
     public void newGame() {
         ParseObject game = new ParseObject("Game");
         game.put("Created_By", ParseUser.getCurrentUser());

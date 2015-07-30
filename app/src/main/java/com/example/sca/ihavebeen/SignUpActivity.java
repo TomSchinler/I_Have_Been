@@ -71,6 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
+        // Facebook Sign Up button
         mFBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -160,6 +160,7 @@ public class GameActivity extends Activity {
         mUserGuess.setThreshold(10);
 
 
+        //grab the game data from the intent
         Intent intent = getIntent();
         String hardClue = intent.getStringExtra("hardClue");
         String mediumClue = intent.getStringExtra("mediumClue");
@@ -170,13 +171,15 @@ public class GameActivity extends Activity {
 
 
 
+        // bind the game data to the views
         mHardClue.setText(hardClue);
         mMediumClue.setText(mediumClue);
         mEasy1Clue.setText(easy1Clue);
         mEasy2Clue.setText(easy2Clue);
         mGiveAwayClue.setText(giveAwayClue);
         mActorName = actorName;
-        //Log.v("actor is", actorName);
+
+
 
         Button button = (Button)findViewById(R.id.gameSubmitButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +196,7 @@ public class GameActivity extends Activity {
                     toast.show();
                 }
                 else {
-                    //toast is for testing only
+                    //toast is for testing only  XCreate Snack bar to inform user of incorrect
                     Toast toast = Toast.makeText(context, "You Done Fucked Up A-Aron", Toast.LENGTH_LONG);
                     toast.show();
                 }
@@ -202,7 +205,7 @@ public class GameActivity extends Activity {
 
 
 
-        //Start timer onCreate after DB call
+        //Start timer onCreate
         mProgressBar.setProgress(0);
 
         final int totalMsecs = 90 * 1000; // 90 seconds in milli seconds

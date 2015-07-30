@@ -62,6 +62,7 @@ public class LIActivity extends AppCompatActivity {
             }
         });
 
+        // Facebook Log In button
         mFBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
