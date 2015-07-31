@@ -26,9 +26,10 @@
     <string name="Email">E-Mail</string>
     <string name="app_id">1614959885456261</string>
     <string name="ABLogOut">Log Out</string>
+    <string name="gameSubmitButton">Submit</string>
 
 
-    <string-array name="guessAC">Christian Slater, Samual L. Jackson</string-array>
+    <string-array name="guessAC">Christian Slater, Samuel L. Jackson</string-array>
 
 
 

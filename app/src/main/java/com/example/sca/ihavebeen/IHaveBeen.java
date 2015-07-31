@@ -5,7 +5,6 @@ import android.app.Application;
 import com.facebook.FacebookSdk;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
-import com.parse.ParseObject;
 
 /**
  * Created by Tom Schinler on 7/8/2015.

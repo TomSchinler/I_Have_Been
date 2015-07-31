@@ -30,7 +30,6 @@ import com.parse.SaveCallback;
     //Parse Logic to handle the db call and distribute data
     public Cursor NewGameDbCall(GameDatabase db) {
 
-
         Cursor cursor = db.getActorsFromDB();
         try {
 

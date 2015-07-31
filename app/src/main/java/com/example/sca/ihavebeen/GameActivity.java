@@ -150,16 +150,6 @@ public class GameActivity extends Activity {
         mUserGuess = (AutoCompleteTextView)findViewById(R.id.userGuessBox);
 
 
-
-
-        //Set AutoComplete Array Adapter
-        mGuessAC = getResources().getStringArray(R.array.guessAC);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>
-                (this, android.R.layout.select_dialog_item, mGuessAC);
-        mUserGuess.setAdapter(adapter);
-        mUserGuess.setThreshold(10);
-
-
         //grab the game data from the intent
         Intent intent = getIntent();
         String hardClue = intent.getStringExtra("hardClue");
@@ -178,6 +168,13 @@ public class GameActivity extends Activity {
         mEasy2Clue.setText(easy2Clue);
         mGiveAwayClue.setText(giveAwayClue);
         mActorName = actorName;
+
+        //Set AutoComplete Array Adapter
+        mGuessAC = getResources().getStringArray(R.array.guessAC);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
+                (this, android.R.layout.select_dialog_item, mGuessAC);
+        mUserGuess.setAdapter(adapter);
+        mUserGuess.setThreshold(5);
 
 
 
