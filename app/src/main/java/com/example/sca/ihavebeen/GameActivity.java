@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +23,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.logging.Filter;
 
 
 public class GameActivity extends Activity {
@@ -65,8 +69,12 @@ public class GameActivity extends Activity {
     TextView mEasy2Clue;
     TextView mGiveAwayClue;
     String mActorName;
-    String[] mGuessAC;
+    Boolean mWinOrLose;
+    Integer mTimerPosistion;
+
     AutoCompleteTextView mUserGuess;
+
+
 
 
 
@@ -140,6 +148,7 @@ public class GameActivity extends Activity {
         });
 
 
+
         //Get Text Views
         mProgressBar = (ProgressBar) findViewById(R.id.gameTimer);
         mHardClue = (TextView)findViewById(R.id.hardClueTextView);
@@ -148,6 +157,15 @@ public class GameActivity extends Activity {
         mEasy2Clue = (TextView)findViewById(R.id.easy2ClueTextView);
         mGiveAwayClue = (TextView)findViewById(R.id.giveAwayClueTextView);
         mUserGuess = (AutoCompleteTextView)findViewById(R.id.userGuessBox);
+
+        //Set AutoComplete Array Adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
+                (GameActivity.this, android.R.layout.select_dialog_item, mGuessAC);
+        mUserGuess.setAdapter(adapter);
+        mUserGuess.setThreshold(1);
+
+
+
 
 
         //grab the game data from the intent
@@ -169,12 +187,7 @@ public class GameActivity extends Activity {
         mGiveAwayClue.setText(giveAwayClue);
         mActorName = actorName;
 
-        //Set AutoComplete Array Adapter
-        mGuessAC = getResources().getStringArray(R.array.guessAC);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>
-                (this, android.R.layout.select_dialog_item, mGuessAC);
-        mUserGuess.setAdapter(adapter);
-        mUserGuess.setThreshold(5);
+
 
 
 
@@ -187,14 +200,17 @@ public class GameActivity extends Activity {
                 String actorName = mActorName;
                 Context context = getApplicationContext();
 
-                if(answer.equalsIgnoreCase(actorName)) {
-                    //Toast is for testing only... Create Intent for next activity if correct
-                    Toast toast = Toast.makeText(context, "That's Right", Toast.LENGTH_LONG);
-                    toast.show();
+                // if guess is correct move to next round activity
+                if(answer.trim().equalsIgnoreCase(actorName)) {
+                    mWinOrLose = true;
+                    Intent intent = new Intent(GameActivity.this, NextRound.class);
+                    intent.putExtra("Score", getTimerScore());
+                    intent.putExtra("win", mWinOrLose);
+                    startActivity(intent);
                 }
                 else {
-                    //toast is for testing only  XCreate Snack bar to inform user of incorrect
-                    Toast toast = Toast.makeText(context, "You Done Fucked Up A-Aron", Toast.LENGTH_LONG);
+
+                    Toast toast = Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
@@ -215,6 +231,8 @@ public class GameActivity extends Activity {
 
                 int secondsRemaining = (int) millisUntilFinished / 1000;
 
+                mTimerPosistion = secondsRemaining;
+
                 float fraction = millisUntilFinished / (float) totalMsecs;
 
             // progress bar is based on scale of 1 to 100;
@@ -230,19 +248,29 @@ public class GameActivity extends Activity {
                     mEasy2Clue.setVisibility(View.VISIBLE);
                 }
             }
-
+            // if time runs out move to next round screen
             public void onFinish() {
-                Log.d("LOG_tag", ">>>>>>>>> countdown timer on finish");
+                mWinOrLose = false;
+                Intent intent = new Intent(GameActivity.this, NextRound.class);
+                intent.putExtra("lose", mWinOrLose);
+
+                startActivity(intent);
             }
         }.start();
 
 
-
-
-
-
-
     }
+    //Get the score based on timer position
+    public int getTimerScore() {
+        int score;
+        score = mTimerPosistion*10;
+        Log.v("Score is ", String.valueOf(score));
+        return score;
+    }
+
+
+
+
 
     @Override
     protected void onResume() {
@@ -304,6 +332,10 @@ public class GameActivity extends Activity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
+
+    private static final String[] mGuessAC = new String[] {
+            "Christian Slater", "Samuel L. Jackson"
+    };
 
 
 
