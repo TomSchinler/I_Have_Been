@@ -68,6 +68,7 @@ public class LIActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 permissions.add("user_status");
+                permissions.add("user_friends");
                 ParseFacebookUtils.logInWithReadPermissionsInBackground(LIActivity.this, permissions, new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, com.parse.ParseException e) {

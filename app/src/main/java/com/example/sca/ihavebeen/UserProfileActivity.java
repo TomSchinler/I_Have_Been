@@ -19,14 +19,20 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
     protected ParseLogic pl;
+    protected FaceBookLogic fbl;
     GameDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new GameDatabase(this);
         pl = new ParseLogic();
+        fbl = new FaceBookLogic();
+
         setContentView(R.layout.activity_user_profile);
+
+        fbl.getUserFriends();
 
         //Testing start game remove when building rest of page
         Button button = (Button)findViewById(R.id.testingStartButton);
