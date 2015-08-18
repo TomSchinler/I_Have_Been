@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '23.0.0 rc3'
+    buildToolsVersion '23.0.0'
 
     defaultConfig {
         applicationId "com.example.sca.ihavebeen"
@@ -30,7 +30,7 @@ dependencies {
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.parse.bolts:bolts-android:1.+'
-    compile fileTree(include: 'Parse-*.jar', dir: 'libs')
+    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile fileTree(include: 'ParseFacebookUtilsV4-*.jar', dir: 'libs')
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile files('C:/Users/TomandGina/Desktop/Dev_Tools/AndroidStudioProjects/IHaveBeen/libs/Parse-1.9.4.jar')
