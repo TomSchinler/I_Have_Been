@@ -11,7 +11,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
  */
 public class GameDatabase extends SQLiteAssetHelper {
 
-    private static final String DATABASE_NAME = "GameDB.db";
+    private static final String DATABASE_NAME = "GameDB.sqlite";
     private static final int DATABASE_VERSION = 1;
 
     public GameDatabase(Context context) {

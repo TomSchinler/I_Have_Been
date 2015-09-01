@@ -124,7 +124,6 @@
     <orderEntry type="library" exported="" name="play-services-appindexing-7.5.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-location-7.5.0" level="project" />
     <orderEntry type="library" exported="" name="Parse-1.10.0" level="project" />
-    <orderEntry type="library" exported="" name="ParseFacebookUtilsV3-1.10.0" level="project" />
     <orderEntry type="library" exported="" name="ParseFacebookUtilsV4-1.10.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-7.5.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-safetynet-7.5.0" level="project" />
