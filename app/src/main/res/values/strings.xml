@@ -31,6 +31,12 @@
 
     <string-array name="guessAC">Christian Slater, Samuel L. Jackson</string-array>
 
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="verifiyStart">New Button</string>
+    <string name="verifyStartMessage">Are you sure you want to start a new game with</string>
+    <string name="title_activity_verify_start">VerifyStartActivity</string>
+    <string name="StartGame">New Button</string>
 
 
 </resources>

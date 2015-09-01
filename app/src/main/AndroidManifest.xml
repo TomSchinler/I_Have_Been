@@ -10,19 +10,20 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".IHaveBeen"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name=".IHaveBeen">
-
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
-        <activity android:name="com.facebook.FacebookActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".GameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -32,16 +33,6 @@
         <activity
             android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
-        </activity>
-        <activity
-            android:name=".GameStart"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_game_start"
-            android:parentActivityName=".UserProfileActivity"
-            android:theme="@style/FullscreenTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sca.ihavebeen.UserProfileActivity" />
         </activity>
         <activity
             android:name=".NextRound"
@@ -81,6 +72,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".GameStart"
+            android:label="@string/title_activity_game_start"
+            android:parentActivityName=".UserProfileActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sca.ihavebeen.UserProfileActivity" />
+        </activity>
+        <activity
+            android:name=".VerifyStartActivity"
+            android:label="@string/title_activity_verify_start"
+            android:parentActivityName=".GameStart" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sca.ihavebeen.GameStart" />
         </activity>
     </application>
 

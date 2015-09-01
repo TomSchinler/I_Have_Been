@@ -16,8 +16,18 @@ import org.json.JSONObject;
  */
 public class FaceBookLogic {
 
+
+
+    public String mFbName;
+    public String mFbProfilePicID;
+    public JSONArray mFbArray;
+
+
+
     //get users friends that are also on the app
     public  GraphRequest getUserFriends () {
+
+
         new GraphRequest(
                 AccessToken.getCurrentAccessToken(),
                 "/me/friends",
@@ -27,23 +37,18 @@ public class FaceBookLogic {
                     public void onCompleted(GraphResponse response) {
                         Log.v("Result", String.valueOf(response));
                         JSONObject friendsJSONObjectName;
-                        JSONObject friendsJSONObjectPaging;
                         if(response != null) {
                             friendsJSONObjectName = response.getJSONObject();
-                            friendsJSONObjectPaging = response.getJSONObject();
                             try {
-                                JSONArray array = friendsJSONObjectName.getJSONArray("data");
-                                for (int i = 0; i < array.length(); i++){
-                                    JSONObject object = (JSONObject) array.get(i);
-                                    Log.v("Object response", String.valueOf(object.get("name")));
+                                mFbArray = friendsJSONObjectName.getJSONArray("data");
+                                for (int i = 0; i < mFbArray.length(); i++){
+                                    JSONObject object = (JSONObject) mFbArray.get(i);
+                                    Log.v("ID Response", String.valueOf(object.get("id").toString()));
+                                    Log.v("Name response", String.valueOf(object.get("name")));
+                                    mFbName= String.valueOf(object.get("name"));
+                                    mFbProfilePicID = String.valueOf(object.get("id"));
                                 }
-                                //This is trying to get the Next data result but is not able to
-                                //convert to an array
-                                JSONArray array2 = friendsJSONObjectPaging.getJSONArray("paging");
-                                for (int i = 0; i < array2.length(); i++){
-                                    JSONObject object = (JSONObject) array2.get(i);
-                                    Log.v("Paging response", String.valueOf(object.get("next")));
-                                }
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -52,8 +57,21 @@ public class FaceBookLogic {
                 }
         ).executeAsync();
 
-        return null ;
+        return null;
     }
+
+    public String getFbName() {
+        return mFbName;
+    }
+
+    public void setFbName(String mFbName) {
+        this.mFbName = mFbName;
+    }
+
+    public JSONArray getFbArray() {
+        return mFbArray;
+    }
+
 
 }
 

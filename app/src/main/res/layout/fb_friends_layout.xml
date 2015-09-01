@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    android:background="#CC3B5998">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fbPic"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:src="@mipmap/ic_launcher"
+        android:paddingLeft="4dp"
+        android:contentDescription="Facebook Image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fbName"
+        tools:text="Gina Schinler"
+        android:textColor="#F2FFFFFF"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/fbPic"
+        android:layout_toEndOf="@+id/fbPic"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp" />
+</RelativeLayout>

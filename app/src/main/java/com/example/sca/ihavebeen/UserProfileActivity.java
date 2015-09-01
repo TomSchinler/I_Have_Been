@@ -18,45 +18,25 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
 
-    protected ParseLogic pl;
-    protected FaceBookLogic fbl;
-    GameDatabase db;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new GameDatabase(this);
-        pl = new ParseLogic();
-        fbl = new FaceBookLogic();
+
 
         setContentView(R.layout.activity_user_profile);
 
-        fbl.getUserFriends();
+
 
         //Testing start game remove when building rest of page
-        Button button = (Button)findViewById(R.id.testingStartButton);
+        Button button = (Button)findViewById(R.id.startNewGame);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pl.NewGameDbCall(db);
-                String hardClue = pl.hardClue;
-                String mediumClue = pl.mediumClue;
-                String easy1Clue = pl.easy1Clue;
-                String easy2Clue = pl.easy2Clue;
-                String giveAwayClue = pl.giveAwayClue;
-                String actorName = pl.actorName;
 
-                pl.newGame();
-
-                //intent for starting game
-                Intent intent = new Intent(UserProfileActivity.this, GameActivity.class);
-                intent.putExtra("actorName", actorName);
-                intent.putExtra("hardClue", hardClue);
-                intent.putExtra("mediumClue", mediumClue);
-                intent.putExtra("easy1Clue", easy1Clue);
-                intent.putExtra("easy2Clue", easy2Clue);
-                intent.putExtra("giveAwayClue", giveAwayClue);
+                Intent intent = new Intent(UserProfileActivity.this, GameStart.class);
                 startActivity(intent);
 
 
