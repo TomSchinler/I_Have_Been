@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Tom Schinler on 9/10/2015.
  */
 public class FriendsViewAdapter extends ArrayAdapter<FaceBookFriends> {
-    public FriendsViewAdapter(Context context, JSONArray friend) {
+    public FriendsViewAdapter(Context context, JSONArray friends) {
         super(context,0);
     }
 
@@ -28,10 +28,10 @@ public class FriendsViewAdapter extends ArrayAdapter<FaceBookFriends> {
         FaceBookFriends friend = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.fb_friends_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.fb_friends_layout, parent);
         }
         TextView fbName = (TextView)convertView.findViewById(R.id.fbName);
-        ImageView fbPic = (ImageView)convertView.findViewById(R.id.fbPic);
+        ImageView fbPic = (ImageView)convertView.findViewById(R.id.fbPic); // Not yet ready to handle this
         fbName.setText(friend.name);
 
 

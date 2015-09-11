@@ -14,19 +14,14 @@ import org.json.JSONArray;
 public class FaceBookFriends {
 
 
-    public static JSONArray getFriendsList() {
-        return mFriendsList;
-    }
+
 
     public static JSONArray mFriendsList;
     public String name;
     public String id;
 
 
-    public FaceBookFriends(String name, String id){
-        this.name = name;
-        this.id = id;
-    }
+
 
     public static JSONArray getFaceBookFriends() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -40,12 +35,26 @@ public class FaceBookFriends {
                         mFriendsList = array;
                         Log.v("Array: ", String.valueOf(mFriendsList));
                         Log.v("Facebook response: ", String.valueOf(response));
+
                     }
                 });
 
         request.executeAsync();
 
+
+
+
         return mFriendsList;
+
+    }
+
+    public static JSONArray getFriendsList() {
+        return mFriendsList;
+    }
+
+    public FaceBookFriends(String name, String id){
+        this.name = name;
+        this.id = id;
     }
 
 }

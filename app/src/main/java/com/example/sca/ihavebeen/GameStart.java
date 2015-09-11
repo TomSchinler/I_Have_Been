@@ -23,12 +23,16 @@ public class GameStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_start);
-        FaceBookFriends.getFaceBookFriends();
+
+
+
         mArrayofFriends = FaceBookFriends.getFriendsList();
+
+
         Log.v("maybe ", String.valueOf(mArrayofFriends));
-        if(mArrayofFriends != null) {
-            populateFbFriendsList();
-        }
+
+        populateFbFriendsList();
+
     }
 
     private void populateFbFriendsList() {

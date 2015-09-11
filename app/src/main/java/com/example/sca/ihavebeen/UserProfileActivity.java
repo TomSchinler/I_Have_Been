@@ -28,6 +28,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_user_profile);
 
+        FaceBookFriends.getFaceBookFriends();
 
 
         //Testing start game remove when building rest of page
