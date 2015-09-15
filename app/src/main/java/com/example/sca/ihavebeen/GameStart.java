@@ -5,19 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
-import com.facebook.AccessToken;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameStart extends AppCompatActivity {
 
-    JSONArray mArrayofFriends;
+    HashMap mFriendsMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +20,21 @@ public class GameStart extends AppCompatActivity {
 
 
 
-        mArrayofFriends = FaceBookFriends.getFriendsList();
-
-
-        Log.v("maybe ", String.valueOf(mArrayofFriends));
-
+        mFriendsMap = FaceBookFriends.getFriendsList();
+        Log.v("maybe ", String.valueOf(mFriendsMap));
         populateFbFriendsList();
 
     }
 
     private void populateFbFriendsList() {
 
-        FriendsViewAdapter adapter = new FriendsViewAdapter(this, mArrayofFriends);
+        FriendsViewAdapter adapter = new FriendsViewAdapter(this, mFriendsMap);
 
         ListView listView = (ListView) findViewById(R.id.fbFriendsListView);
         listView.setAdapter(adapter);
     }
+
+
 
 
 

@@ -7,6 +7,11 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Created by Tom Schinler on 8/4/2015.
@@ -17,12 +22,11 @@ public class FaceBookFriends {
 
 
     public static JSONArray mFriendsList;
-    public String name;
-    public String id;
+    public static HashMap<String, String> mFriendsMap;
 
 
 
-
+    //Get FB Friends
     public static JSONArray getFaceBookFriends() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         GraphRequest request = GraphRequest.newMyFriendsRequest(
@@ -40,23 +44,30 @@ public class FaceBookFriends {
                 });
 
         request.executeAsync();
-
-
-
-
-        return mFriendsList;
-
-    }
-
-    public static JSONArray getFriendsList() {
         return mFriendsList;
     }
 
-    public FaceBookFriends(String name, String id){
-        this.name = name;
-        this.id = id;
-    }
+    //Convert JSONArray to Hashmap
+    public static HashMap<String, String> getFriendsList() {
+         mFriendsMap = new HashMap<String,String>();
+        for(int i = 0; i < mFriendsList.length(); i++) {
+            JSONObject jsonArray = null;
+            try {
+                jsonArray = mFriendsList.getJSONObject(i);
+                Iterator it = jsonArray.keys();
+                while (it.hasNext()) {
+                    String n = (String) it.next();
+                    mFriendsMap.put(n, jsonArray.getString(n));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
+        }
+
+        Log.v("HashMap ", String.valueOf(mFriendsMap));
+        return mFriendsMap;
+    }
 }
 
 

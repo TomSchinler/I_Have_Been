@@ -37,6 +37,7 @@
     <string name="verifyStartMessage">Are you sure you want to start a new game with</string>
     <string name="title_activity_verify_start">VerifyStartActivity</string>
     <string name="StartGame">New Button</string>
+    <string name="randomSelectButton">Random</string>
 
 
 </resources>
