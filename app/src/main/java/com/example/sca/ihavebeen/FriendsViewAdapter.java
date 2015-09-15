@@ -1,25 +1,16 @@
 package com.example.sca.ihavebeen;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.facebook.login.widget.ProfilePictureView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Tom Schinler on 9/10/2015.
@@ -27,22 +18,23 @@ import java.util.Map;
 public class FriendsViewAdapter extends BaseAdapter {
 
 
-    private ArrayList mFriendsList;
+    private ArrayList<HashMap<String, String>> mFriendsList;
 
-    public FriendsViewAdapter(GameStart gameStart, Map<String, String> friendsMap) {
-        mFriendsList = new ArrayList();
-        mFriendsList.addAll(friendsMap.entrySet());
+    public FriendsViewAdapter(GameStart gameStart, ArrayList<HashMap<String, String>> friendslist) {
+        mFriendsList = new ArrayList<HashMap<String, String>>(friendslist);
+        Log.v("I hope this works ", String.valueOf(mFriendsList));
 
     }
 
     @Override
     public int getCount() {
+        Log.v("Size is ", String.valueOf(mFriendsList.size()));
         return mFriendsList.size();
     }
 
     @Override
-    public Map.Entry<String, String> getItem(int position) {
-        return (Map.Entry) mFriendsList.get(position);
+    public HashMap<String, String> getItem(int position) {
+        return mFriendsList.get(position);
     }
 
     @Override
@@ -59,15 +51,19 @@ public class FriendsViewAdapter extends BaseAdapter {
         else {
             result = convertView;
         }
-        Map.Entry<String, String> friendName = getItem(1);
-        Map.Entry<String, String> friendId = getItem(0);
 
-        String fbPhotoId = friendId.getValue();
+        String friendName = getItem(1).get("name");
+        String friendId = getItem(0).get("id");
+
+
+
+
+        String fbPhotoId = friendId.toString();
 
         ProfilePictureView profilePictureView = (ProfilePictureView)result.findViewById(R.id.fbPic);
         TextView fbName = (TextView)result.findViewById(R.id.fbName);
 
-        fbName.setText(friendName.getValue());
+        fbName.setText(friendName);
         profilePictureView.setProfileId(fbPhotoId);
 
 

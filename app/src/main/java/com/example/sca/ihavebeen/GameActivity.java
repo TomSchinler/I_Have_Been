@@ -7,13 +7,10 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,8 +20,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.logging.Filter;
 
 
 public class GameActivity extends Activity {
@@ -70,7 +65,7 @@ public class GameActivity extends Activity {
     TextView mGiveAwayClue;
     String mActorName;
     Boolean mWinOrLose;
-    Integer mTimerPosistion;
+    Integer mTimerPosition;
 
     AutoCompleteTextView mUserGuess;
 
@@ -231,7 +226,7 @@ public class GameActivity extends Activity {
 
                 int secondsRemaining = (int) millisUntilFinished / 1000;
 
-                mTimerPosistion = secondsRemaining;
+                mTimerPosition = secondsRemaining;
 
                 float fraction = millisUntilFinished / (float) totalMsecs;
 
@@ -263,7 +258,7 @@ public class GameActivity extends Activity {
     //Get the score based on timer position
     public int getTimerScore() {
         int score;
-        score = mTimerPosistion*10;
+        score = mTimerPosition *10;
         Log.v("Score is ", String.valueOf(score));
         return score;
     }
@@ -334,7 +329,7 @@ public class GameActivity extends Activity {
 
 
     private static final String[] mGuessAC = new String[] {
-            "Christian Slater", "Samuel L. Jackson"
+            "Christian Slater", "Samuel L. Jackson", "Leonardo DiCaprio"
     };
 
 

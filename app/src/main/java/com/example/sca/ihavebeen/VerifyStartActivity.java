@@ -3,14 +3,15 @@ package com.example.sca.ihavebeen;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class VerifyStartActivity extends AppCompatActivity {
 
     protected ParseLogic pl;
+    String mFriendName;
+    TextView mOpponent;
 
     GameDatabase db;
 
@@ -21,6 +22,14 @@ public class VerifyStartActivity extends AppCompatActivity {
         db = new GameDatabase(this);
         pl = new ParseLogic();
         setContentView(R.layout.activity_verify_start);
+
+        Intent intent = getIntent();
+        mFriendName = intent.getStringExtra("Friend Name");
+        mOpponent = (TextView)findViewById(R.id.verifyPerson);
+        mOpponent.setText(mFriendName);
+
+
+
 
         Button button = (Button)findViewById(R.id.verifyButton);
         button.setOnClickListener(new View.OnClickListener() {

@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -22,7 +23,8 @@ public class FaceBookFriends {
 
 
     public static JSONArray mFriendsList;
-    public static HashMap<String, String> mFriendsMap;
+    public static HashMap<String, Object> mFriendsMap;
+    public static ArrayList<HashMap<String, String>> mFinalFriendsList;
 
 
 
@@ -48,25 +50,28 @@ public class FaceBookFriends {
     }
 
     //Convert JSONArray to Hashmap
-    public static HashMap<String, String> getFriendsList() {
-         mFriendsMap = new HashMap<String,String>();
-        for(int i = 0; i < mFriendsList.length(); i++) {
-            JSONObject jsonArray = null;
-            try {
-                jsonArray = mFriendsList.getJSONObject(i);
-                Iterator it = jsonArray.keys();
-                while (it.hasNext()) {
-                    String n = (String) it.next();
-                    mFriendsMap.put(n, jsonArray.getString(n));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+    public static ArrayList getFriendsList() {
+
+        mFinalFriendsList = new ArrayList<HashMap<String, String>>();
+
+        try {
+            int i = 0;
+            String value;
+            JSONObject e = new JSONObject();
+            while (i < mFriendsList.length()){
+                HashMap<String, String> friend = new HashMap<String, String>();
+                e=mFriendsList.getJSONObject(i);
+                value = e.getString("name");
+                friend.put("name", value);
+                value = e.getString("id");
+                friend.put("id", value);
+                mFinalFriendsList.add(i, friend);
+                i++;
             }
-
+        } catch (JSONException e1) {
+            e1.printStackTrace();
         }
-
-        Log.v("HashMap ", String.valueOf(mFriendsMap));
-        return mFriendsMap;
+     return mFinalFriendsList;
     }
 }
 
