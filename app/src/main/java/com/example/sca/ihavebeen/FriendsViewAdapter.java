@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.facebook.login.widget.ProfilePictureView;
@@ -16,6 +17,9 @@ import java.util.HashMap;
  * Created by Tom Schinler on 9/10/2015.
  */
 public class FriendsViewAdapter extends BaseAdapter {
+
+    String mFriendName;
+    String mFriendId;
 
 
     private ArrayList<HashMap<String, String>> mFriendsList;
@@ -52,25 +56,18 @@ public class FriendsViewAdapter extends BaseAdapter {
             result = convertView;
         }
 
-        String friendName = getItem(1).get("name");
-        String friendId = getItem(0).get("id");
-
-
-
-
-        String fbPhotoId = friendId.toString();
+        mFriendName = getItem(position).get("name");
+        mFriendId = getItem(position).get("id");
+        String fbPhotoId = mFriendId;
 
         ProfilePictureView profilePictureView = (ProfilePictureView)result.findViewById(R.id.fbPic);
         TextView fbName = (TextView)result.findViewById(R.id.fbName);
 
-        fbName.setText(friendName);
+        fbName.setText(mFriendName);
         profilePictureView.setProfileId(fbPhotoId);
-
 
         return result;
     }
-
-
 }
 
 

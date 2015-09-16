@@ -51,9 +51,10 @@ import com.parse.SaveCallback;
 
 
     // Create ParseObject that for individual games
-    public void newGame() {
+    public void newGame(String opponentId) {
         ParseObject game = new ParseObject("Game");
         game.put("Created_By", ParseUser.getCurrentUser());
+        game.put("Opponent_Id", opponentId);
         game.put("Actor_Name", actorName);
         game.put("Hard_Clue", hardClue);
         game.put("Medium_Clue", mediumClue);

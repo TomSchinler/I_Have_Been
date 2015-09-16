@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.facebook.login.widget.ProfilePictureView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,9 +42,11 @@ public class GameStart extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String clickedTextView = ((TextView) view.findViewById(R.id.fbName)).getText().toString();
+                String FbId = ((ProfilePictureView) view.findViewById(R.id.fbPic)).getProfileId();
 
                 Intent intent = new Intent(GameStart.this, VerifyStartActivity.class);
                 intent.putExtra("Friend Name", clickedTextView);
+                intent.putExtra("Facebook Profile Id", FbId);
                 startActivity(intent);
             }
         });
