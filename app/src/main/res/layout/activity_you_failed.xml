@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="#0099cc"
-    tools:context="com.example.sca.ihavebeen.ResultsActivity">
+    tools:context="com.example.sca.ihavebeen.YouFailed"
+    android:id="@+id/failRelLayout">
 
 
     <RelativeLayout
@@ -13,8 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/congrats_text"
-            android:id="@+id/congrats"
+            android:text="@string/you_have_failed"
+            android:id="@+id/failTextView"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp" />
@@ -23,26 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/your_score_is"
-            android:id="@+id/yourScoreTextView"
-            android:layout_below="@+id/congrats"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="130dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/score"
-            tools:text="1000"
+            android:text="@string/fail_paragraph"
+            android:id="@+id/failParagraph"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back_to_profile"
-            android:id="@+id/backToProfile"
+            android:text="@string/fail_button"
+            android:id="@+id/failButton"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp" />
@@ -51,12 +45,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/wait_for_opponent_text"
-            android:id="@+id/waitForOpponent"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/score"
+            android:text="You have failed to figure out who I am."
+            android:id="@+id/youHaveFailedTextView"
+            android:layout_above="@+id/failParagraph"
             android:layout_centerHorizontal="true"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp" />
+            android:paddingBottom="10dp" />
+
     </RelativeLayout>
 </FrameLayout>

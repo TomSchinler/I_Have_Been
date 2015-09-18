@@ -39,5 +39,18 @@
     <string name="StartGame">New Button</string>
     <string name="randomSelectButton">Random</string>
 
+    <string name="title_activity_you_failed">You Failed</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="you_have_failed">YOU HAVE FAILED</string>
+    <string name="fail_paragraph">Your guesses were stupid, and we are all now dumber for having witnessed it.  I award you no points and may god have mercy on your soul.  Now go sit in shame and await your opponents score.</string>
+    <string name="shame_button">New Button</string>
+    <string name="fail_button">Walk of shame</string>
+    <string name="you_have_failed_me">You have failed to figure out who I am.</string>
+    <string name="congrats_text">YOU DID IT!!</string>
+    <string name="your_score_is">Your Score is:</string>
+    <string name="back_to_profile">Back to profile</string>
+    <string name="wait_for_opponent_text">Great Job! Now head back to the profile page and await your opponents score. Good Luck!</string>
+
 
 </resources>

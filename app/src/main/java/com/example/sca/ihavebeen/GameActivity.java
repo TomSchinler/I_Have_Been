@@ -1,7 +1,6 @@
 package com.example.sca.ihavebeen;
 
 import com.example.sca.ihavebeen.util.SystemUiHider;
-import com.facebook.appevents.AppEventsLogger;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -64,8 +63,11 @@ public class GameActivity extends Activity {
     TextView mEasy2Clue;
     TextView mGiveAwayClue;
     String mActorName;
-    Boolean mWinOrLose;
+    String mWinOrLose;
     Integer mTimerPosition;
+    final int mTotalMsecs = 90 * 1000; // 90 seconds in milli seconds
+    int mCallInterval = 10;
+    CountDownTimer mCountDownTimer;
 
     AutoCompleteTextView mUserGuess;
 
@@ -143,24 +145,20 @@ public class GameActivity extends Activity {
         });
 
 
-
         //Get Text Views
         mProgressBar = (ProgressBar) findViewById(R.id.gameTimer);
-        mHardClue = (TextView)findViewById(R.id.hardClueTextView);
-        mMediumClue = (TextView)findViewById(R.id.mediumClueTextView);
-        mEasy1Clue = (TextView)findViewById(R.id.easy1ClueTextView);
-        mEasy2Clue = (TextView)findViewById(R.id.easy2ClueTextView);
-        mGiveAwayClue = (TextView)findViewById(R.id.giveAwayClueTextView);
-        mUserGuess = (AutoCompleteTextView)findViewById(R.id.userGuessBox);
+        mHardClue = (TextView) findViewById(R.id.hardClueTextView);
+        mMediumClue = (TextView) findViewById(R.id.mediumClueTextView);
+        mEasy1Clue = (TextView) findViewById(R.id.easy1ClueTextView);
+        mEasy2Clue = (TextView) findViewById(R.id.easy2ClueTextView);
+        mGiveAwayClue = (TextView) findViewById(R.id.giveAwayClueTextView);
+        mUserGuess = (AutoCompleteTextView) findViewById(R.id.userGuessBox);
 
         //Set AutoComplete Array Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>
                 (GameActivity.this, android.R.layout.select_dialog_item, mGuessAC);
         mUserGuess.setAdapter(adapter);
         mUserGuess.setThreshold(1);
-
-
-
 
 
         //grab the game data from the intent
@@ -173,7 +171,6 @@ public class GameActivity extends Activity {
         String actorName = intent.getStringExtra("actorName");
 
 
-
         // bind the game data to the views
         mHardClue.setText(hardClue);
         mMediumClue.setText(mediumClue);
@@ -182,11 +179,10 @@ public class GameActivity extends Activity {
         mGiveAwayClue.setText(giveAwayClue);
         mActorName = actorName;
 
+        countDownTimer(mTotalMsecs, mCallInterval).start();
 
 
-
-
-        Button button = (Button)findViewById(R.id.gameSubmitButton);
+        Button button = (Button) findViewById(R.id.gameSubmitButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,14 +192,15 @@ public class GameActivity extends Activity {
                 Context context = getApplicationContext();
 
                 // if guess is correct move to next round activity
-                if(answer.trim().equalsIgnoreCase(actorName)) {
-                    mWinOrLose = true;
-                    Intent intent = new Intent(GameActivity.this, NextRound.class);
+                if (answer.trim().equalsIgnoreCase(actorName)) {
+                    mWinOrLose = "win";
+                    Intent intent = new Intent(GameActivity.this, ResultsActivity.class);
                     intent.putExtra("Score", getTimerScore());
-                    intent.putExtra("win", mWinOrLose);
+                    intent.putExtra("Win", mWinOrLose);
+                    mCountDownTimer.cancel();
                     startActivity(intent);
-                }
-                else {
+
+                } else {
 
                     Toast toast = Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT);
                     toast.show();
@@ -212,15 +209,13 @@ public class GameActivity extends Activity {
         });
 
 
-
         //Start timer onCreate
         mProgressBar.setProgress(0);
+    }
 
-        final int totalMsecs = 90 * 1000; // 90 seconds in milli seconds
-        int callInterval = 10;
-
-        /** CountDownTimer */
-        new CountDownTimer(totalMsecs, callInterval) {
+    /** CountDownTimer */
+    private CountDownTimer countDownTimer(final int milliSecs, int callInterval) {
+        mCountDownTimer = new CountDownTimer(milliSecs, callInterval) {
 
             public void onTick(long millisUntilFinished) {
 
@@ -228,13 +223,13 @@ public class GameActivity extends Activity {
 
                 mTimerPosition = secondsRemaining;
 
-                float fraction = millisUntilFinished / (float) totalMsecs;
+                float fraction = millisUntilFinished / (float) milliSecs;
 
-            // progress bar is based on scale of 1 to 100;
-                mProgressBar.setProgress ( (int) (fraction * 100) );
+                // progress bar is based on scale of 1 to 100;
+                mProgressBar.setProgress((int) (fraction * 100));
 
                 if (secondsRemaining <= 80) {
-                   mMediumClue.setVisibility(View.VISIBLE);
+                    mMediumClue.setVisibility(View.VISIBLE);
                 }
                 if (secondsRemaining <= 70) {
                     mEasy1Clue.setVisibility(View.VISIBLE);
@@ -243,45 +238,27 @@ public class GameActivity extends Activity {
                     mEasy2Clue.setVisibility(View.VISIBLE);
                 }
             }
+
             // if time runs out move to next round screen
             public void onFinish() {
-                mWinOrLose = false;
-                Intent intent = new Intent(GameActivity.this, NextRound.class);
-                intent.putExtra("lose", mWinOrLose);
-
+                mWinOrLose = "lose";
+                Intent intent = new Intent(GameActivity.this, YouFailed.class);
+                intent.putExtra("Lose", mWinOrLose);
                 startActivity(intent);
             }
-        }.start();
+        };
 
-
+        return mCountDownTimer;
     }
-    //Get the score based on timer position
-    public int getTimerScore() {
+
+   //Get the score based on timer position
+    public String getTimerScore() {
         int score;
+        String scoreString;
         score = mTimerPosition *10;
+        scoreString = String.valueOf(score);
         Log.v("Score is ", String.valueOf(score));
-        return score;
-    }
-
-
-
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // Logs 'install' and 'app activate' App Events.
-        AppEventsLogger.activateApp(this);
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        // Logs 'app deactivate' App Event.
-        AppEventsLogger.deactivateApp(this);
+        return scoreString;
     }
 
     @Override
