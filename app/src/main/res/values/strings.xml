@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">I Have Been</string>
 
+    <string name="parse_app_id">bjA0QqhyKabcRWWTUMYfOHNk8lPw1cL8XSQzwJpg</string>
+    <string name="parse_client_key">Or4rdadLABWiGO4KbjuDxdJca84wUpkjWcZompvi</string>
 
     <string name="HardCluePlaceHolderText">Hard Clue</string>
     <string name="MediumCluePlaceHolderText">Medium Clue</string>
@@ -31,7 +33,7 @@
 
     <string-array name="guessAC">Christian Slater, Samuel L. Jackson</string-array>
 
-<!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="verifiyStart">New Button</string>
     <string name="verifyStartMessage">Are you sure you want to start a new game with</string>
@@ -40,8 +42,6 @@
     <string name="randomSelectButton">Random</string>
 
     <string name="title_activity_you_failed">You Failed</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="you_have_failed">YOU HAVE FAILED</string>
     <string name="fail_paragraph">Your guesses were stupid, and we are all now dumber for having witnessed it.  I award you no points and may god have mercy on your soul.  Now go sit in shame and await your opponents score.</string>
     <string name="shame_button">New Button</string>

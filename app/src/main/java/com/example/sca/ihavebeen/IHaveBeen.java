@@ -1,6 +1,8 @@
 package com.example.sca.ihavebeen;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.facebook.FacebookSdk;
 import com.parse.Parse;
@@ -25,6 +27,11 @@ public class IHaveBeen extends Application {
         ParseObject testObject = new ParseObject("TestObject");
         testObject.put("foo", "bar");
         testObject.saveInBackground();*/
+    }
+
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }
 

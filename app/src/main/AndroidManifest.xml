@@ -18,6 +18,8 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
+        android:name="android.support.multidex.MultiDexApplication">
+
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -90,6 +92,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sca.ihavebeen.UserProfileActivity" />
         </activity>
+
     </application>
 
 </manifest>

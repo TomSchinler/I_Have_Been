@@ -14,6 +14,9 @@ import android.widget.Button;
 
 public class YouFailed extends AppCompatActivity {
 
+    String mObjectId;
+    String mUserScore;
+    ParseLogic mPl;
 
 
     @Override
@@ -21,6 +24,14 @@ public class YouFailed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_you_failed);
+
+        Intent intent = getIntent();
+        mObjectId = intent.getStringExtra("objectID");
+        mPl = new ParseLogic();
+
+        mUserScore = "0";
+
+        mPl.updateGame(mObjectId, mUserScore);
 
         Button button = (Button)findViewById(R.id.failButton);
         button.setOnClickListener(new View.OnClickListener() {
