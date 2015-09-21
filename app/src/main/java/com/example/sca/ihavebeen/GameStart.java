@@ -22,7 +22,7 @@ public class GameStart extends AppCompatActivity {
 
     public static ArrayList<HashMap<String, String>> mFinalFriendsList;
     ListView mFacebookListView;
-    String mFbPhotoId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

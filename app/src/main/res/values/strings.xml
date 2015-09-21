@@ -51,6 +51,8 @@
     <string name="your_score_is">Your Score is:</string>
     <string name="back_to_profile">Back to profile</string>
     <string name="wait_for_opponent_text">Great Job! Now head back to the profile page and await your opponents score. Good Luck!</string>
+    <string name="opponents_Score_Text">New Text</string>
+    <string name="yourScoreText">Your Score:</string>
 
 
 </resources>
