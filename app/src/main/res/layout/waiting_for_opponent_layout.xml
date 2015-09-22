@@ -8,7 +8,7 @@
     <com.facebook.login.widget.ProfilePictureView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/upFbPic"
+        android:id="@+id/wfoFbPic"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -23,8 +23,8 @@
         android:id="@+id/wfoNameText"
         tools:text="Gina Schinler"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/upFbPic"
-        android:layout_toEndOf="@+id/upFbPic" />
+        android:layout_toRightOf="@+id/wfoFbPic"
+        android:layout_toEndOf="@+id/wfoFbPic" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:id="@+id/wfoYourScoreText"
         android:layout_marginRight="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_alignTop="@+id/wfoYourScoreNumber"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/wfoYourScoreNumber"
         android:layout_toStartOf="@+id/wfoYourScoreNumber" />
 

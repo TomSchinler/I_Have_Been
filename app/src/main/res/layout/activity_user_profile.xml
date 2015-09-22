@@ -15,11 +15,21 @@
         android:layout_centerHorizontal="true" />
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/waitingOnYouListView"
+        android:id="@+id/waitingForYouListView"
         android:layout_below="@+id/startNewGame"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp" />
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waitingForOpponentListView"
+        android:layout_below="@+id/waitingForYouListView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp" />
+
+
 
 </RelativeLayout>

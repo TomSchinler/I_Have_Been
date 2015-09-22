@@ -34,6 +34,8 @@ public class ParseLogic extends Application {
 
     ArrayList<String> mGameList;
 
+    String mMyFbId = FaceBookFriends.getMyFbId();
+
 
 
     //Parse Logic to handle the db call and distribute data
@@ -61,10 +63,11 @@ public class ParseLogic extends Application {
 
     // Create ParseObject that for individual games
     public void newGame(String opponentId,String opponentName) {
-        final ParseObject game = new ParseObject("Game");
+        final ParseObject game = ParseObject.create("Game");
         game.put("Created_By", mUser);
         game.put("Opponent_Id", opponentId);
         game.put("Opponent_Name", opponentName);
+        game.put("My_FB_Id", mMyFbId);
         game.put("Actor_Name", actorName);
         game.put("Hard_Clue", hardClue);
         game.put("Medium_Clue", mediumClue);
@@ -104,7 +107,7 @@ public class ParseLogic extends Application {
             @Override
             public void done(ParseObject Game, ParseException e) {
                 if(e == null){
-                    Game.put("Creator_Score", ParseUser.getCurrentUser() + " " + userScore);
+                    Game.put("Creator_Score", userScore);
                     Game.saveInBackground();
                 }
                 else {
@@ -114,6 +117,7 @@ public class ParseLogic extends Application {
         });
 
     }
+
 
 
 

@@ -27,6 +27,8 @@ public class VerifyStartActivity extends AppCompatActivity {
         pl = new ParseLogic();
         setContentView(R.layout.activity_verify_start);
 
+
+
         Intent intent = getIntent();
         mFacebookOpponentId = intent.getStringExtra("Facebook Profile Id");
         mFriendName = intent.getStringExtra("Friend Name");
@@ -34,7 +36,7 @@ public class VerifyStartActivity extends AppCompatActivity {
         mOpponent.setText(mFriendName);
 
         pl.NewGameDbCall(db);
-        pl.newGame(mFacebookOpponentId,mFriendName);
+        pl.newGame(mFacebookOpponentId, mFriendName);
 
 
         mObjectId = pl.getObjectId();

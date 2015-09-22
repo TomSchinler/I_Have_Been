@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 //import com.facebook.appevents.AppEventsLogger;
 import com.facebook.appevents.AppEventsLogger;
@@ -15,13 +18,19 @@ import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 
+import java.util.List;
+
 
 public class UserProfileActivity extends AppCompatActivity {
 
     ParseLogic mPl;
+    private WfoAdapter wfoAdapter;
+    private WoyAdapter woyAdapter;
 
+    String mMyFbId;
 
-
+    ListView mWfoListView;
+    ListView mWoyListView;
 
 
     @Override
@@ -32,7 +41,38 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         mPl = new ParseLogic();
 
+        mMyFbId = FaceBookFriends.getMyFbId();
+
         FaceBookFriends.getFaceBookFriends();
+
+        mWoyListView = (ListView)findViewById(R.id.waitingForYouListView);
+        mWfoListView = (ListView)findViewById(R.id.waitingForOpponentListView);
+
+        if(mMyFbId != null) {
+            populateWoyListView();
+        }
+        else {
+            mMyFbId = FaceBookFriends.getMyFbId();
+            if(mMyFbId != null) {
+                populateWoyListView();
+            }
+        }
+        populateWfoListView();
+
+        mWoyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String goTV = ((TextView) view.findViewById(R.id.gameObjectHiddenTextView)).getText().toString();
+                String score = ((TextView) view.findViewById(R.id.woyScoreNumber)).getText().toString();
+                Log.v("Clicked Object Id ", goTV);
+                Intent intent = new Intent(UserProfileActivity.this, AreYouReady.class);
+                intent.putExtra("Score", score);
+                intent.putExtra("Object Id", goTV);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         //Testing start game remove when building rest of page
@@ -55,6 +95,10 @@ public class UserProfileActivity extends AppCompatActivity {
 
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
+        populateWoyListView();
+        populateWfoListView();
+
+
     }
 
     @Override
@@ -75,7 +119,17 @@ public class UserProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void populateWoyListView() {
+        woyAdapter = new WoyAdapter(this ,mMyFbId);
+        woyAdapter.loadObjects();
+        mWoyListView.setAdapter(woyAdapter);
+    }
 
+    private void populateWfoListView() {
+        wfoAdapter = new WfoAdapter(this);
+        wfoAdapter.loadObjects();
+        mWfoListView.setAdapter(wfoAdapter);
+    }
 
 
 }

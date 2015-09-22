@@ -54,5 +54,12 @@
     <string name="opponents_Score_Text">New Text</string>
     <string name="yourScoreText">Your Score:</string>
 
+    <string name="title_activity_are_you_ready">Are You Ready</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="are_you_ready">Large Text</string>
+    <string name="score_to_beat">Medium Text</string>
+    <string name="lets_do_this">New Button</string>
+
 
 </resources>

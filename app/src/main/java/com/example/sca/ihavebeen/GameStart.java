@@ -23,6 +23,8 @@ public class GameStart extends AppCompatActivity {
     public static ArrayList<HashMap<String, String>> mFinalFriendsList;
     ListView mFacebookListView;
 
+    String mMyFbId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class GameStart extends AppCompatActivity {
         Log.v("maybe ", String.valueOf(mFinalFriendsList));
 
         populateFbFriendsList();
+
 
 
 
