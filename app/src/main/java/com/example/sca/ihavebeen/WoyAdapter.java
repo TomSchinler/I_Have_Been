@@ -42,13 +42,13 @@ public class WoyAdapter extends ParseQueryAdapter<Game>{
         super.getItemView(game, view, parent);
 
         ProfilePictureView friendPic = (ProfilePictureView) view.findViewById(R.id.woyFbPic);
-        String friendId = game.getOpponentId();
+        String friendId = game.getCreatorId();
         if(friendId != null){
             friendPic.setProfileId(friendId);
         }
 
         TextView oppName = (TextView)view.findViewById(R.id.woyNameText);
-        oppName.setText(game.getOpponentName());
+        oppName.setText(game.getCreatorFbName());
 
         TextView oppScore = (TextView)view.findViewById(R.id.woyScoreNumber);
         oppScore.setText(game.getCreatorScore());

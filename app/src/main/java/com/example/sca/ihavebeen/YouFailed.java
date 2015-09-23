@@ -16,6 +16,7 @@ public class YouFailed extends AppCompatActivity {
 
     String mObjectId;
     String mUserScore;
+    String mCarriedScore;
     ParseLogic mPl;
 
 
@@ -27,11 +28,12 @@ public class YouFailed extends AppCompatActivity {
 
         Intent intent = getIntent();
         mObjectId = intent.getStringExtra("objectID");
+        mCarriedScore = intent.getStringExtra("carried score");
         mPl = new ParseLogic();
 
         mUserScore = "0";
 
-        mPl.updateGame(mObjectId, mUserScore);
+        mPl.updateGame(mObjectId, mUserScore, mCarriedScore);
 
         Button button = (Button)findViewById(R.id.failButton);
         button.setOnClickListener(new View.OnClickListener() {

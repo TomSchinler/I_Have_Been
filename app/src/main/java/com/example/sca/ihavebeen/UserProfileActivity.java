@@ -68,6 +68,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserProfileActivity.this, AreYouReady.class);
                 intent.putExtra("Score", score);
                 intent.putExtra("Object Id", goTV);
+
                 startActivity(intent);
             }
         });

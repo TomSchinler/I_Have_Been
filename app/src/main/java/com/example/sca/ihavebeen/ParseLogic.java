@@ -32,9 +32,12 @@ public class ParseLogic extends Application {
     String mObjectId;
     String mNoScoreYet = "";
 
+
+
     ArrayList<String> mGameList;
 
     String mMyFbId = FaceBookFriends.getMyFbId();
+    String mMyFbName = FaceBookFriends.getMyFbName();
 
 
 
@@ -67,7 +70,8 @@ public class ParseLogic extends Application {
         game.put("Created_By", mUser);
         game.put("Opponent_Id", opponentId);
         game.put("Opponent_Name", opponentName);
-        game.put("My_FB_Id", mMyFbId);
+        game.put("Creator_FB_Id", mMyFbId);
+        game.put("Creator_FB_Name", mMyFbName);
         game.put("Actor_Name", actorName);
         game.put("Hard_Clue", hardClue);
         game.put("Medium_Clue", mediumClue);
@@ -99,7 +103,7 @@ public class ParseLogic extends Application {
 
 
     //update game object with users score
-    public void updateGame(String objectId, final String userScore) {
+    public void updateGame(String objectId, final String userScore, final String carriedScore) {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Game");
         Log.v("object id ", objectId);
@@ -107,8 +111,14 @@ public class ParseLogic extends Application {
             @Override
             public void done(ParseObject Game, ParseException e) {
                 if(e == null){
-                    Game.put("Creator_Score", userScore);
-                    Game.saveInBackground();
+                    if(carriedScore == null) {
+                        Game.put("Creator_Score", userScore);
+                        Game.saveInBackground();
+                    }else if(carriedScore != null){
+                        Log.v("carriedScore ", carriedScore);
+                        Game.put("Opponent_Score", userScore);
+                        Game.saveInBackground();
+                    }
                 }
                 else {
                     Log.v("The Save Failed: ", "reason: " + e);

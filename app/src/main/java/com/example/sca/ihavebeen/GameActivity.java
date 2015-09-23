@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -69,6 +70,7 @@ public class GameActivity extends Activity {
     int mCallInterval = 10;
     CountDownTimer mCountDownTimer;
     String mObjectId;
+    String mCarriedScore = "";
 
     AutoCompleteTextView mUserGuess;
 
@@ -154,6 +156,26 @@ public class GameActivity extends Activity {
         mEasy2Clue = (TextView) findViewById(R.id.easy2ClueTextView);
         mGiveAwayClue = (TextView) findViewById(R.id.giveAwayClueTextView);
         mUserGuess = (AutoCompleteTextView) findViewById(R.id.userGuessBox);
+        mUserGuess.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_DOWN){
+                    if((keyCode == KeyEvent.KEYCODE_ENTER )){
+                        rightGuess();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
+
+
+
+
+
 
         //Set AutoComplete Array Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>
@@ -170,6 +192,7 @@ public class GameActivity extends Activity {
         String easy2Clue = intent.getStringExtra("easy2Clue");
         String giveAwayClue = intent.getStringExtra("giveAwayClue");
         String actorName = intent.getStringExtra("actorName");
+        mCarriedScore= intent.getStringExtra("carried score");
         mObjectId = intent.getStringExtra("objectId");
         Log.v("GA ObjId Result: ", mObjectId);
 
@@ -189,25 +212,7 @@ public class GameActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //Check if guess is correct
-                String answer = mUserGuess.getText().toString();
-                String actorName = mActorName;
-                Context context = getApplicationContext();
-
-                // if guess is correct move to next round activity
-                if (answer.trim().equalsIgnoreCase(actorName)) {
-                    mWinOrLose = "win";
-                    Intent intent = new Intent(GameActivity.this, ResultsActivity.class);
-                    intent.putExtra("Score", getTimerScore());
-                    intent.putExtra("Win", mWinOrLose);
-                    intent.putExtra("objectId", mObjectId);
-                    mCountDownTimer.cancel();
-                    startActivity(intent);
-
-                } else {
-
-                    Toast toast = Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+                rightGuess();
             }
         });
 
@@ -248,6 +253,7 @@ public class GameActivity extends Activity {
                 Intent intent = new Intent(GameActivity.this, YouFailed.class);
                 intent.putExtra("Lose", mWinOrLose);
                 intent.putExtra("objectID", mObjectId);
+                intent.putExtra("carried score", mCarriedScore);
                 startActivity(intent);
             }
         };
@@ -263,6 +269,32 @@ public class GameActivity extends Activity {
         scoreString = String.valueOf(score);
         Log.v("Score is ", String.valueOf(score));
         return scoreString;
+    }
+
+    public void rightGuess(){
+
+        String answer = mUserGuess.getText().toString();
+        String actorName = mActorName;
+        Context context = getApplicationContext();
+
+        // if guess is correct move to next round activity
+        if (answer.trim().equalsIgnoreCase(actorName)) {
+            mWinOrLose = "win";
+            Intent intent = new Intent(GameActivity.this, ResultsActivity.class);
+            intent.putExtra("Score", getTimerScore());
+            intent.putExtra("Win", mWinOrLose);
+            intent.putExtra("objectId", mObjectId);
+            intent.putExtra("carried score", mCarriedScore);
+            mCountDownTimer.cancel();
+            startActivity(intent);
+
+        } else {
+
+            Toast toast = Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+
     }
 
     @Override

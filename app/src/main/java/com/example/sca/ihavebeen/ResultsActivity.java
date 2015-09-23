@@ -14,6 +14,7 @@ public class ResultsActivity extends Activity {
 
     TextView mScoreView;
     String mScore;
+    String mCarriedScore;
     String mWin;
     String mObjectId;
     ParseLogic mPl;
@@ -32,12 +33,15 @@ public class ResultsActivity extends Activity {
 
         Intent intent = getIntent();
         mScore = intent.getStringExtra("Score");
+        mCarriedScore = intent.getStringExtra("carried score");
         mWin = intent.getStringExtra("Win");
         mObjectId = intent.getStringExtra("objectId");
+
+
         mScoreView.setText(mScore);
 
         Log.v("Results object ID is: ", mObjectId);
-        mPl.updateGame(mObjectId, mScore);
+        mPl.updateGame(mObjectId, mScore, mCarriedScore);
 
 
         Button button = (Button)findViewById(R.id.backToProfile);

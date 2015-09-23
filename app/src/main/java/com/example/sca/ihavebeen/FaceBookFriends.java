@@ -26,8 +26,37 @@ public class FaceBookFriends {
     public static JSONArray mFriendsList;
     public static HashMap<String, Object> mFriendsMap;
     public static ArrayList<HashMap<String, String>> mFinalFriendsList;
-    public static String mMyFbId;
 
+
+
+    public static String mMyFbId;
+    public static String mFBName;
+
+    public static String getMyFbName(){
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        GraphRequest request = GraphRequest.newMeRequest(
+                accessToken,
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+                        try {
+                            mFBName = response.getJSONObject().getString("name");
+
+
+                            Log.v("My FB ID is: ", mFBName);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "name");
+        request.setParameters(parameters);
+        request.executeAsync();
+        return mFBName;
+    }
 
     public static String getMyFbId(){
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -40,6 +69,7 @@ public class FaceBookFriends {
                             GraphResponse response) {
                         try {
                             mMyFbId = response.getJSONObject().getString("id");
+
                             Log.v("My FB ID is: ", mMyFbId);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -50,8 +80,7 @@ public class FaceBookFriends {
         parameters.putString("fields", "id");
         request.setParameters(parameters);
         request.executeAsync();
-
-        return mMyFbId;
+      return mMyFbId;
     }
 
 
@@ -100,6 +129,8 @@ public class FaceBookFriends {
         }
      return mFinalFriendsList;
     }
+
+
 }
 
 

@@ -67,5 +67,12 @@ public class Game extends ParseObject {
         return getString("updatedAt");
     }
 
+    public String getCreatorId(){
+        return getString("Creator_FB_Id");
+    }
+
+    public String getCreatorFbName() {
+        return getString("Creator_FB_Name");
+    }
 
 }
