@@ -60,7 +60,7 @@ public class Game extends ParseObject {
     }
 
     public String getOpponentScore(){
-        return getString("OpponentScore");
+        return getString("Opponent_Score");
     }
 
     public String getUpdated(){

@@ -2,6 +2,7 @@ package com.example.sca.ihavebeen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 //import com.facebook.appevents.AppEventsLogger;
@@ -17,6 +19,8 @@ import com.facebook.appevents.AppEventsLogger;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -26,38 +30,47 @@ public class UserProfileActivity extends AppCompatActivity {
     ParseLogic mPl;
     private WfoAdapter wfoAdapter;
     private WoyAdapter woyAdapter;
+    private CompletedGameAdapter completedGameAdapter;
+    private TicketSystem mTicketsSytem;
+
+
 
     String mMyFbId;
+    String mMyFbName;
+
+    int mTickets;
 
     ListView mWfoListView;
     ListView mWoyListView;
+    ListView mCompletedGameListView;
+    TextView mTickesNumber;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new getFbDeets().execute();
 
-
-        setContentView(R.layout.activity_user_profile);
-        mPl = new ParseLogic();
 
         mMyFbId = FaceBookFriends.getMyFbId();
+        mMyFbName = FaceBookFriends.getMyFbName();
+        mTicketsSytem = new TicketSystem();
+        mTickets = mTicketsSytem.getTickets();
 
-        FaceBookFriends.getFaceBookFriends();
+        setContentView(R.layout.activity_user_profile);
 
+
+        mPl = new ParseLogic();
         mWoyListView = (ListView)findViewById(R.id.waitingForYouListView);
         mWfoListView = (ListView)findViewById(R.id.waitingForOpponentListView);
+        mCompletedGameListView = (ListView)findViewById(R.id.completedGameListView);
+        mTickesNumber = (TextView)findViewById(R.id.numberOfTickets);
 
-        if(mMyFbId != null) {
-            populateWoyListView();
-        }
-        else {
-            mMyFbId = FaceBookFriends.getMyFbId();
-            if(mMyFbId != null) {
-                populateWoyListView();
-            }
-        }
-        populateWfoListView();
+        mTickesNumber.setText(String.valueOf(mTickets));
+
+
+
+        FaceBookFriends.getFaceBookFriends();
 
         mWoyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,10 +86,7 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-        //Testing start game remove when building rest of page
+         //Testing start game remove when building rest of page
         Button button = (Button)findViewById(R.id.startNewGame);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +108,11 @@ public class UserProfileActivity extends AppCompatActivity {
         AppEventsLogger.activateApp(this);
         populateWoyListView();
         populateWfoListView();
+        populateCompleteListView();
 
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -132,6 +144,32 @@ public class UserProfileActivity extends AppCompatActivity {
         mWfoListView.setAdapter(wfoAdapter);
     }
 
+    private void populateCompleteListView() {
+        completedGameAdapter = new CompletedGameAdapter(this, mMyFbId);
+        completedGameAdapter.loadObjects();
+        mCompletedGameListView.setAdapter(completedGameAdapter);
+    }
+
+
+    protected class getFbDeets extends AsyncTask<Void, String, String>{
+        @Override
+        protected String doInBackground(Void... params) {
+
+
+            return FaceBookFriends.getMyFbId();
+        }
+        @Override
+        protected void onPostExecute(String result){
+
+            mMyFbId = result;
+            populateWoyListView();
+            populateWfoListView();
+            populateCompleteListView();
+        }
+    }
+
+
 
 }
+
 

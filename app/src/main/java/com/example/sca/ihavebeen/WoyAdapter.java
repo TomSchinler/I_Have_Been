@@ -24,6 +24,7 @@ public class WoyAdapter extends ParseQueryAdapter<Game>{
                 //Log.v("var fbid is ", fbId);
                 ParseQuery query = new ParseQuery("Game");
                 query.whereEqualTo("Opponent_Id", fbId);
+                query.whereEqualTo("Opponent_Score", "");
                 query.orderByDescending("updatedAt");
                 query.setLimit(4);
                 return query;

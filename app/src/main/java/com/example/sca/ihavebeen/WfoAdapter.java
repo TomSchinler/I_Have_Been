@@ -25,7 +25,7 @@ public class WfoAdapter extends ParseQueryAdapter<Game> {
 
                 ParseQuery query = new ParseQuery("Game");
                 query.whereEqualTo("Created_By", ParseUser.getCurrentUser());
-                query.whereContains("Opponent_Score", "");
+                query.whereEqualTo("Opponent_Score", "");
                 query.orderByDescending("updatedAt");
                 query.setLimit(4);
 

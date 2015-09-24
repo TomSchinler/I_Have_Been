@@ -60,6 +60,7 @@
     <string name="are_you_ready">Large Text</string>
     <string name="score_to_beat">Medium Text</string>
     <string name="lets_do_this">New Button</string>
+    <string name="ticketsText">Medium Text</string>
 
 
 </resources>
