@@ -28,21 +28,23 @@
             android:name=".GameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile" >
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name=".ResultsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_next_round"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/title_activity_welcome" >
+            android:label="@string/title_activity_welcome"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +54,8 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName=".WelcomeActivity" >
+            android:parentActivityName=".WelcomeActivity"
+            android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".WelcomeActivity" />
@@ -60,7 +63,8 @@
         <activity
             android:name=".LIActivity"
             android:label="@string/title_activity_log_in"
-            android:parentActivityName=".WelcomeActivity" >
+            android:parentActivityName=".WelcomeActivity"
+            android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".WelcomeActivity" />
@@ -68,7 +72,8 @@
         <activity
             android:name=".GameStart"
             android:label="@string/title_activity_game_start"
-            android:parentActivityName=".UserProfileActivity" >
+            android:parentActivityName=".UserProfileActivity"
+            android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sca.ihavebeen.UserProfileActivity" />
@@ -76,7 +81,8 @@
         <activity
             android:name=".VerifyStartActivity"
             android:label="@string/title_activity_verify_start"
-            android:parentActivityName=".GameStart" >
+            android:parentActivityName=".GameStart"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sca.ihavebeen.GameStart" />
@@ -85,7 +91,8 @@
             android:name=".YouFailed"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_you_failed"
-            android:parentActivityName=".UserProfileActivity" >
+            android:parentActivityName=".UserProfileActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sca.ihavebeen.UserProfileActivity" />
@@ -95,7 +102,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_are_you_ready"
             android:parentActivityName=".UserProfileActivity"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sca.ihavebeen.UserProfileActivity" />

@@ -1,26 +1,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#0099cc" tools:context=".GameActivity">
+    android:layout_height="match_parent" android:background="@color/background_gold" tools:context=".GameActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
-        android:textStyle="bold" android:textSize="50sp" android:gravity="center"/>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
     <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
         android:fitsSystemWindows="true">
-
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-        </LinearLayout>
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -44,12 +33,27 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:textStyle="bold|italic"
+            android:textColor="@color/action_bar_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buy_another_clue"
+            android:id="@+id/buyGiveAwayButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="75dp"
+            android:visibility="gone"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            android:id="@+id/gameClueLinearLayout">
+            android:id="@+id/gameClueLinearLayout"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/darker_gold">
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,7 +62,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/HardCluePlaceHolderText"
                 android:visibility="visible"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -67,7 +72,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/MediumCluePlaceHolderText"
                 android:visibility="invisible"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -76,7 +82,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/Easy1CluePlaceHolderText"
                 android:visibility="invisible"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -85,7 +92,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/Easy2CluePlaceHolderText"
                 android:visibility="invisible"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -94,7 +102,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/GiveAwayCluePlaceHolderText"
                 android:visibility="invisible"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
@@ -105,15 +114,22 @@
                 android:layout_marginTop="15dp"
                 android:focusable="true"
                 android:singleLine="true"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionDone"
+                android:background="@color/faded_red"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/white" />
 
             <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:textStyle="bold|italic"
+                android:textColor="@color/action_bar_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Submit"
                 android:id="@+id/gameSubmitButton"
                 android:layout_gravity="center_horizontal"
-                android:clickable="false" />
+                android:clickable="false"
+                android:gravity="center" />
         </LinearLayout>
 
     </FrameLayout>

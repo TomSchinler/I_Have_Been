@@ -1,5 +1,10 @@
 <resources>
 
     <color name="black_overlay">#66000000</color>
+    <color name="background_gold">#90E6B800</color>
+    <color name="action_bar_red">#B80000</color>
+    <color name="darkerRed">#770000</color>
+    <color name="faded_red">#FF8080</color>
+    <color name="darker_gold">#758A6E00</color>
 
 </resources>

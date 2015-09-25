@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#0099cc"
-    tools:context="com.example.sca.ihavebeen.ResultsActivity">
+    android:layout_height="match_parent" android:background="@color/background_gold"
+    tools:context="com.example.sca.ihavebeen.ResultsActivity"
+    >
 
 
     <RelativeLayout
@@ -17,7 +18,7 @@
             android:id="@+id/congrats"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="45dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,6 +40,9 @@
             android:layout_centerHorizontal="true" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:textStyle="bold|italic"
+            android:textColor="@color/action_bar_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/back_to_profile"

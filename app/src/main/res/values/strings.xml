@@ -11,19 +11,18 @@
     <string name="GiveAwayCluePlaceHolderText">Give Away Clue</string>
     <string name="IHaveBeen">I Have Been:</string>
     <string name="HintTextPlaceHolder">Type Your Guess Here</string>
-    <string name="title_activity_user_profile">UserProfileActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_user_profile">I Have Been</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_game_start">GameStart</string>
-    <string name="title_activity_next_round">NextRound</string>
+    <string name="title_activity_game_start">Ready to play?</string>
+    <string name="title_activity_next_round">Results</string>
     <string name="title_activity_results">Results</string>
     <string name="email_prompt">E-Mail</string>
     <string name="Password">Password</string>
     <string name="Log_in">Log In</string>
     <string name="Sign_Up">Sign Up</string>
-    <string name="title_activity_welcome">Welcome</string>
-    <string name="title_activity_sign_up">SignUp</string>
-    <string name="title_activity_log_in">LogIn</string>
+    <string name="title_activity_welcome">I Have Been</string>
+    <string name="title_activity_sign_up">Sign Up!</string>
+    <string name="title_activity_log_in">Log In!</string>
     <string name="Logo_Text">Large Text</string>
     <string name="Email">E-Mail</string>
     <string name="app_id">1614959885456261</string>
@@ -31,15 +30,15 @@
     <string name="gameSubmitButton">Submit</string>
 
 
-    <string-array name="guessAC">Christian Slater, Samuel L. Jackson</string-array>
 
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
     <string name="verifiyStart">New Button</string>
     <string name="verifyStartMessage">Are you sure you want to start a new game with</string>
-    <string name="title_activity_verify_start">VerifyStartActivity</string>
-    <string name="StartGame">New Button</string>
-    <string name="randomSelectButton">Random</string>
+    <string name="title_activity_verify_start">No, I said, ARE YOU READY!!!!</string>
+    <string name="StartGame">Start A New Game</string>
+    <string name="randomSelectButton">Randomly Select Opponent</string>
 
     <string name="title_activity_you_failed">You Failed</string>
     <string name="you_have_failed">YOU HAVE FAILED</string>
@@ -55,12 +54,16 @@
     <string name="yourScoreText">Your Score:</string>
 
     <string name="title_activity_are_you_ready">Are You Ready</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="are_you_ready">Large Text</string>
     <string name="score_to_beat">Medium Text</string>
-    <string name="lets_do_this">New Button</string>
+    <string name="lets_do_this">LET\'S DO THIS!!</string>
     <string name="ticketsText">Medium Text</string>
+    <string name="submit_button">Submit</string>
+    <string name="buy_another_clue">Buy Another Clue</string>
+    <string name="waiting_for_you_text">Your Turn</string>
+    <string name="waiting_for_opponent">Waiting for your opponent</string>
+    <string name="complete_game_text">Completed Games</string>
+    <string name="you_failed_start_line">You have failed to figure out who I am.</string>
 
 
 </resources>

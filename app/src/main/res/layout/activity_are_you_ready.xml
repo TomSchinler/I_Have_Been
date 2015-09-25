@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#0099cc"
+    android:layout_height="match_parent" android:background="@color/background_gold"
     tools:context="com.example.sca.ihavebeen.AreYouReady">
 
 
@@ -40,9 +40,12 @@
             android:layout_marginTop="30dp" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:textStyle="bold|italic"
+            android:textColor="@color/action_bar_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LETS DO THIS!"
+            android:text="@string/lets_do_this"
             android:id="@+id/letsDoThisButton"
             android:layout_below="@+id/scoreToBeatNumber"
             android:layout_centerHorizontal="true"

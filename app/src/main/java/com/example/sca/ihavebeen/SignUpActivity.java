@@ -27,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     protected EditText mEmailField;
     protected EditText mPasswordField;
+    protected EditText mUserName;
     protected Button mButton;
     protected Button mFBButton;
     final Collection<String> permissions = new ArrayList<>();
@@ -40,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         //bind member variables to views
         mEmailField = (EditText)findViewById(R.id.SUeMail);
         mPasswordField = (EditText)findViewById(R.id.SUPassword);
+        mUserName = (EditText)findViewById(R.id.userNameEditText);
         mButton = (Button)findViewById(R.id.SUButton);
         mFBButton = (Button)findViewById(R.id.FBSignUpButton);
 
@@ -49,8 +51,10 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String Email = mEmailField.getText().toString();
                 String Password = mPasswordField.getText().toString();
+                String UserName = mUserName.getText().toString();
                 ParseUser user = new ParseUser();
-                user.setUsername(Email);
+                user.setUsername(UserName);
+                user.setEmail(Email);
                 user.setPassword(Password);
 
 

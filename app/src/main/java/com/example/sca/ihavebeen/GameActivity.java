@@ -31,6 +31,7 @@ public class GameActivity extends Activity {
     TextView mEasy1Clue;
     TextView mEasy2Clue;
     TextView mGiveAwayClue;
+    Button mBuyGiveAway;
     String mMyFbName;
     String mActorName;
     String mWinOrLose;
@@ -49,8 +50,7 @@ public class GameActivity extends Activity {
 
         setContentView(R.layout.activity_game);
 
-        final View controlsView = findViewById(R.id.fullscreen_content_controls);
-        final View contentView = findViewById(R.id.fullscreen_content);
+
 
          //Get Text Views
         mProgressBar = (ProgressBar) findViewById(R.id.gameTimer);
@@ -63,12 +63,14 @@ public class GameActivity extends Activity {
         mUserGuess.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_DOWN){
-                    if((keyCode == KeyEvent.KEYCODE_ENTER )){
-                        rightGuess();
-                        return true;
-                    }
-                }
+               if(event.getAction() == KeyEvent.ACTION_DOWN){
+                   switch (keyCode){
+                       case KeyEvent.KEYCODE_ENTER:
+                           rightGuess();
+                           return true;
+                       default:break;
+                   }
+               }
                 return false;
             }
         });
@@ -112,6 +114,18 @@ public class GameActivity extends Activity {
             }
         });
 
+        mBuyGiveAway = (Button)findViewById(R.id.buyGiveAwayButton);
+        mBuyGiveAway.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context, "In the full version this will cost 2 tickets",
+                        Toast.LENGTH_SHORT);
+                toast.show();
+                mGiveAwayClue.setVisibility(View.VISIBLE);
+                mBuyGiveAway.setVisibility(View.GONE);
+            }
+        });
 
         //Start timer onCreate
         mProgressBar.setProgress(0);
@@ -140,6 +154,9 @@ public class GameActivity extends Activity {
                 }
                 if (secondsRemaining <= 60) {
                     mEasy2Clue.setVisibility(View.VISIBLE);
+                }
+                if (secondsRemaining <= 55){
+                    mBuyGiveAway.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -195,7 +212,11 @@ public class GameActivity extends Activity {
     }
 
     private static final String[] mGuessAC = new String[] {
-            "Christian Slater", "Samuel L. Jackson", "Leonardo DiCaprio"
+            "Christian Slater", "Samuel L. Jackson", "Leonardo DiCaprio", "Kevin Bacon", "Tom Hanks",
+            "Tom Cruise", "Brad Pitt", "Johnny Depp", "Robin Williams", "Jack Nicholson", "Adam Sandler",
+            "Bruce Willis", "Julia Roberts", "Angelina Jolie", "Drew Barrymore", "Uma Thurman",
+            "Cameron Diaz", "Sandra Bullock", "Bette Midler", "Demi Moore", "Christina Ricci",
+            "Jennifer Lawrence"
     };
 
 }
