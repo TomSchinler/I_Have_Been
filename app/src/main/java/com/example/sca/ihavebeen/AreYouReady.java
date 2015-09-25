@@ -36,6 +36,8 @@ public class AreYouReady extends Activity {
 
     Intent mIntent;
 
+    TicketSystem mTicketSystem;
+
     Button mButton;
 
 
@@ -43,7 +45,7 @@ public class AreYouReady extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        mTicketSystem = new TicketSystem();
 
         setContentView(R.layout.activity_are_you_ready);
         setupActionBar();
@@ -80,6 +82,11 @@ public class AreYouReady extends Activity {
             mButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    int tickets;
+                    tickets = mTicketSystem.costOfGame();
+                    mTicketSystem.setTickets(tickets);
+
                     mIntent = new Intent(AreYouReady.this, GameActivity.class);
                     mIntent.putExtra("actorName", mActorName);
                     mIntent.putExtra("hardClue", mHardClue);

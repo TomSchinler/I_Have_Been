@@ -28,8 +28,6 @@ public class WfoAdapter extends ParseQueryAdapter<Game> {
                 query.whereEqualTo("Opponent_Score", "");
                 query.orderByDescending("updatedAt");
                 query.setLimit(4);
-
-                Log.v("query returns: ", String.valueOf(query));
                 return query;
             }
         });

@@ -1,6 +1,5 @@
 package com.example.sca.ihavebeen;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,18 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 //import com.facebook.appevents.AppEventsLogger;
 import com.facebook.appevents.AppEventsLogger;
-import com.parse.ParseObject;
-import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 
 public class UserProfileActivity extends AppCompatActivity {
@@ -43,7 +35,7 @@ public class UserProfileActivity extends AppCompatActivity {
     ListView mWfoListView;
     ListView mWoyListView;
     ListView mCompletedGameListView;
-    TextView mTickesNumber;
+    TextView mmTicketNumber;
 
 
     @Override
@@ -64,9 +56,9 @@ public class UserProfileActivity extends AppCompatActivity {
         mWoyListView = (ListView)findViewById(R.id.waitingForYouListView);
         mWfoListView = (ListView)findViewById(R.id.waitingForOpponentListView);
         mCompletedGameListView = (ListView)findViewById(R.id.completedGameListView);
-        mTickesNumber = (TextView)findViewById(R.id.numberOfTickets);
+        mmTicketNumber = (TextView)findViewById(R.id.numberOfTickets);
 
-        mTickesNumber.setText(String.valueOf(mTickets));
+        mmTicketNumber.setText(String.valueOf(mTickets));
 
 
 
@@ -106,6 +98,9 @@ public class UserProfileActivity extends AppCompatActivity {
 
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
+
+        mTickets = mTicketsSytem.getTickets();
+        mmTicketNumber.setText(String.valueOf(mTickets));
         populateWoyListView();
         populateWfoListView();
         populateCompleteListView();

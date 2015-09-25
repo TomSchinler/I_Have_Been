@@ -5,6 +5,9 @@ package com.example.sca.ihavebeen;
  */
 public class TicketSystem {
 
+    // When Parse is set up get tickets from Parse User
+    private int tickets = 25;
+
     public int getTickets() {
         return tickets;
     }
@@ -13,8 +16,7 @@ public class TicketSystem {
         this.tickets = tickets;
     }
 
-    // When Parse is set up get tickets from Parse User
-    private int tickets = 25;
+
 
     // Costs 4 tickets to play the game
     public int costOfGame() {

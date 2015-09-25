@@ -17,6 +17,8 @@ public class VerifyStartActivity extends AppCompatActivity {
     String mObjectId;
     Intent mIntent;
 
+    TicketSystem mTicketSystem;
+
     GameDatabase db;
 
     @Override
@@ -25,6 +27,7 @@ public class VerifyStartActivity extends AppCompatActivity {
 
         db = new GameDatabase(this);
         pl = new ParseLogic();
+        mTicketSystem = new TicketSystem();
         setContentView(R.layout.activity_verify_start);
 
 
@@ -45,6 +48,12 @@ public class VerifyStartActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int tickets;
+                tickets = mTicketSystem.costOfGame();
+                mTicketSystem.setTickets(tickets);
+
+
                 if (mObjectId != null) {
 
 

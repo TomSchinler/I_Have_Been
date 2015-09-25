@@ -13,6 +13,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,11 +32,13 @@ public class ParseLogic extends Application {
     String actorName = "";
     String mObjectId;
     String mNoScoreYet = "";
+    String mWinnerName;
+    boolean mJustChecking;
 
 
 
-    ArrayList<String> mGameList;
 
+    TicketSystem ticketSystem = new TicketSystem();
     String mMyFbId = FaceBookFriends.getMyFbId();
     String mMyFbName = FaceBookFriends.getMyFbName();
 
@@ -128,12 +131,62 @@ public class ParseLogic extends Application {
 
     }
 
+    public void giveTheWinnerHisDue(String objectId){
+
+        mWinnerName="";
+        ParseQuery<Game> query = new ParseQuery<Game>("Game");
+        query.whereEqualTo("objectId", objectId);
+        query.getInBackground(objectId, new GetCallback<Game>() {
+            @Override
+            public void done(Game object, ParseException e) {
 
 
+                String oppName = object.getOpponentName();
+                String creatName = object.getCreatorFbName();
+                int oppScore = Integer.parseInt(object.getOpponentScore());
+                int creatScore = Integer.parseInt(object.getCreatorScore());
+
+                if(oppScore > creatScore){
+                    mWinnerName = oppName;
+                }
+                else {
+                    mWinnerName = creatName;
+                }
+            }
+        });
+        if(mWinnerName.equals(mMyFbName)) {
+            int tickets = ticketSystem.sweetTasteOfVictory();
+            ticketSystem.setTickets(tickets);
+        }
+        else if(mWinnerName.equals(mMyFbName)){
+            int tickets = ticketSystem.sweetTasteOfVictory();
+            ticketSystem.setTickets(tickets);
+        }
+    }
 
 
+    public boolean justChecking(String objectId) {
+        mJustChecking = false;
+        ParseQuery<Game> query = new ParseQuery<Game>("Game");
+        query.whereEqualTo("objectId", objectId);
+        query.getInBackground(objectId, new GetCallback<Game>() {
+            @Override
+            public void done(Game object, ParseException e){
+                String oppScore = object.getOpponentScore();
+                String creatScore = object.getCreatorScore();
 
+                if(oppScore != "" && creatScore != "") {
+                    mJustChecking = true;
+                }
+            }
+        });
 
+        return mJustChecking;
+    }
+
+    public boolean isJustChecking() {
+        return mJustChecking;
+    }
 
 }
 

@@ -17,13 +17,17 @@ public class ResultsActivity extends Activity {
     String mCarriedScore;
     String mWin;
     String mObjectId;
+    String mWinnerName;
+    String mMyFbName;
     ParseLogic mPl;
+    boolean mChecked;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         setContentView(R.layout.activity_results);
 
@@ -36,15 +40,32 @@ public class ResultsActivity extends Activity {
         mCarriedScore = intent.getStringExtra("carried score");
         mWin = intent.getStringExtra("Win");
         mObjectId = intent.getStringExtra("objectId");
+        mMyFbName = intent.getStringExtra("mMyFbName");
 
 
         mScoreView.setText(mScore);
 
-        Log.v("Results object ID is: ", mObjectId);
+
         mPl.updateGame(mObjectId, mScore, mCarriedScore);
+        mPl.justChecking(mObjectId);
+        mChecked = mPl.isJustChecking();
 
 
         Button button = (Button)findViewById(R.id.backToProfile);
+        while(mChecked = false){
+            button.setVisibility(View.INVISIBLE);
+            try{
+                mChecked = mPl.isJustChecking();
+                if(mChecked = true) {
+                    mPl.giveTheWinnerHisDue(mObjectId);
+                    button.setVisibility(View.VISIBLE);
+                }
+
+            }
+            finally {
+
+            }
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
