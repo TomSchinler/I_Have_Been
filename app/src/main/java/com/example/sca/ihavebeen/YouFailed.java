@@ -49,13 +49,7 @@ public class YouFailed extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
+    @Override
+    public void onBackPressed(){}
 
 }

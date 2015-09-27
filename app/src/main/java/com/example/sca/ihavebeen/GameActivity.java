@@ -174,6 +174,9 @@ public class GameActivity extends Activity {
         return mCountDownTimer;
     }
 
+    @Override
+    public void onBackPressed(){}
+
     //Get the score based on timer position
     public String getTimerScore() {
         int score;

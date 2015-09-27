@@ -42,7 +42,7 @@
 
     <string name="title_activity_you_failed">You Failed</string>
     <string name="you_have_failed">YOU HAVE FAILED</string>
-    <string name="fail_paragraph">Your guesses were stupid, and we are all now dumber for having witnessed it.  I award you no points and may god have mercy on your soul.  Now go sit in shame and await your opponents score.</string>
+    <string name="fail_paragraph">Your guesses were stupid, and we are all now dumber for having witnessed it.  I award you no points and may god have mercy on your soul.  Now go sit in shame and await your opponent\'s score.</string>
     <string name="shame_button">New Button</string>
     <string name="fail_button">Walk of shame</string>
     <string name="you_have_failed_me">You have failed to figure out who I am.</string>
@@ -64,6 +64,8 @@
     <string name="waiting_for_opponent">Waiting for your opponent</string>
     <string name="complete_game_text">Completed Games</string>
     <string name="you_failed_start_line">You have failed to figure out who I am.</string>
+    <string name="new_Welcome_Text">WELCOME TO I HAVE BEEN!!</string>
+    <string name="new_welcome_paragraph">Please log in and enjoy the game.</string>
 
 
 </resources>

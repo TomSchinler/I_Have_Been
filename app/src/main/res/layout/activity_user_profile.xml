@@ -85,7 +85,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="115dp"
+        android:layout_height="130dp"
         android:layout_below="@+id/completeGameTextView"
         android:id="@+id/compGameRelLayout">
 

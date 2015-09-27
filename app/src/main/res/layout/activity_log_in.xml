@@ -18,7 +18,8 @@
         android:layout_above="@+id/LIPassword"
         android:layout_alignLeft="@+id/LIPassword"
         android:layout_alignStart="@+id/LIPassword"
-        android:background="@color/darker_gold" />
+        android:background="@color/darker_gold"
+        android:visibility="gone" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:hint="@string/Password"
-        android:background="@color/darker_gold" />
+        android:background="@color/darker_gold"
+        android:visibility="gone" />
 
     <Button
         style="?android:attr/borderlessButtonStyle"
@@ -40,16 +42,36 @@
         android:text="@string/Log_in"
         android:id="@+id/LIButton"
         android:layout_below="@+id/LIPassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/FbLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="62dp"
-        android:layout_below="@+id/LIButton"
+        android:text="Log in With Facebook"
+        android:layout_below="@+id/new_welcome_paragraph"
         android:layout_centerHorizontal="true"
-        android:text="Log in With Facebook" />
+        android:layout_marginTop="104dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/new_Welcome_Text"
+        android:id="@+id/newWelcomeText"
+        android:layout_above="@+id/new_welcome_paragraph"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/new_welcome_paragraph"
+        android:id="@+id/new_welcome_paragraph"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

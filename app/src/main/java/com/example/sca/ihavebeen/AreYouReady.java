@@ -48,7 +48,6 @@ public class AreYouReady extends Activity {
         mTicketSystem = new TicketSystem();
 
         setContentView(R.layout.activity_are_you_ready);
-        setupActionBar();
 
 
         Intent intent = getIntent();
@@ -106,31 +105,6 @@ public class AreYouReady extends Activity {
 
 
 
-    };
-
-
-
-    /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void setupActionBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            // Show the Up button in the action bar.
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
     }
-
-
-
-
-
-
-    public void getGameDeets (final Game game) {
-
-
-    }
-
-
 
 }

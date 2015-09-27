@@ -41,7 +41,9 @@ public class LIActivity extends AppCompatActivity {
         mFBButton = (Button)findViewById(R.id.FbLoginButton);
 
 
-        //Log In with Parse on button click
+
+
+        /*//Log In with Parse on button click
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +62,7 @@ public class LIActivity extends AppCompatActivity {
 
                 });
             }
-        });
+        });*/
 
         // Facebook Log In button
         mFBButton.setOnClickListener(new View.OnClickListener() {
