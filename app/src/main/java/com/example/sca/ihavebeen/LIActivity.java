@@ -40,6 +40,12 @@ public class LIActivity extends AppCompatActivity {
         mButton = (Button)findViewById(R.id.LIButton);
         mFBButton = (Button)findViewById(R.id.FbLoginButton);
 
+        if (ParseUser.getCurrentUser() != null) {
+            Intent intent = new Intent(LIActivity.this, UserProfileActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+
 
 
 
