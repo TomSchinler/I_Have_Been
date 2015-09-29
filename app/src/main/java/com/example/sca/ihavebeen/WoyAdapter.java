@@ -21,7 +21,7 @@ public class WoyAdapter extends ParseQueryAdapter<Game>{
         super(context, new ParseQueryAdapter.QueryFactory<Game>() {
 
             public ParseQuery<Game> create() {
-                //Log.v("var fbid is ", fbId);
+
                 ParseQuery query = new ParseQuery("Game");
                 query.whereEqualTo("Opponent_Id", fbId);
                 query.whereEqualTo("Opponent_Score", "");
@@ -37,7 +37,6 @@ public class WoyAdapter extends ParseQueryAdapter<Game>{
 
         if (view == null) {
             view = View.inflate(getContext(), R.layout.waiting_on_you_layout, null);
-            Log.v("WOY is this", "running");
         }
 
         super.getItemView(game, view, parent);

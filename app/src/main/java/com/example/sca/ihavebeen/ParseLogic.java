@@ -117,6 +117,13 @@ public class ParseLogic extends Application {
                     if(carriedScore == null) {
                         Game.put("Creator_Score", userScore);
                         Game.saveInBackground();
+
+
+
+
+
+
+
                     }else if(carriedScore != null){
                         Log.v("carriedScore ", carriedScore);
                         Game.put("Opponent_Score", userScore);

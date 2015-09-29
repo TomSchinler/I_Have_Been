@@ -7,6 +7,7 @@ import android.support.multidex.MultiDex;
 import com.facebook.FacebookSdk;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 
 /**
@@ -20,6 +21,7 @@ public class IHaveBeen extends Application {
         ParseObject.registerSubclass(Game.class);
         Parse.initialize(this, "bjA0QqhyKabcRWWTUMYfOHNk8lPw1cL8XSQzwJpg",
                 "Or4rdadLABWiGO4KbjuDxdJca84wUpkjWcZompvi");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         ParseFacebookUtils.initialize(this);
 

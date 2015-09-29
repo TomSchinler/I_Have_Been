@@ -38,7 +38,6 @@ public class WfoAdapter extends ParseQueryAdapter<Game> {
 
         if (view == null) {
             view = View.inflate(getContext(), R.layout.waiting_for_opponent_layout, null);
-            Log.v("is this", "running");
         }
 
         super.getItemView(game, view, parent);
@@ -54,9 +53,8 @@ public class WfoAdapter extends ParseQueryAdapter<Game> {
 
         TextView oppScore = (TextView)view.findViewById(R.id.wfoYourScoreNumber);
         oppScore.setText(game.getCreatorScore());
-        Log.v("oppName", String.valueOf(oppName));
 
-        return view;
+         return view;
     }
 
 

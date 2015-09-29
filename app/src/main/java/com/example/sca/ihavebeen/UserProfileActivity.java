@@ -1,5 +1,6 @@
 package com.example.sca.ihavebeen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,15 +42,14 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new getFbDeets().execute();
 
 
-        mMyFbId = FaceBookFriends.getMyFbId();
-        mMyFbName = FaceBookFriends.getMyFbName();
         mTicketsSytem = new TicketSystem();
         mTickets = mTicketsSytem.getTickets();
+        new getFbDeets(this).execute();
 
         setContentView(R.layout.activity_user_profile);
+
 
 
         mPl = new ParseLogic();
@@ -60,23 +60,13 @@ public class UserProfileActivity extends AppCompatActivity {
 
         mmTicketNumber.setText(String.valueOf(mTickets));
 
+        populateUI();
+
 
 
         FaceBookFriends.getFaceBookFriends();
 
-        mWoyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String goTV = ((TextView) view.findViewById(R.id.gameObjectHiddenTextView)).getText().toString();
-                String score = ((TextView) view.findViewById(R.id.woyScoreNumber)).getText().toString();
-                Log.v("Clicked Object Id ", goTV);
-                Intent intent = new Intent(UserProfileActivity.this, AreYouReady.class);
-                intent.putExtra("Score", score);
-                intent.putExtra("Object Id", goTV);
 
-                startActivity(intent);
-            }
-        });
 
          //Testing start game remove when building rest of page
         Button button = (Button)findViewById(R.id.startNewGame);
@@ -130,8 +120,28 @@ public class UserProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void populateUI() {
+        populateWoyListView();
+        populateWfoListView();
+        populateCompleteListView();
+
+        mWoyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String goTV = ((TextView) view.findViewById(R.id.gameObjectHiddenTextView)).getText().toString();
+                String score = ((TextView) view.findViewById(R.id.woyScoreNumber)).getText().toString();
+                Log.v("Clicked Object Id ", goTV);
+                Intent intent = new Intent(UserProfileActivity.this, AreYouReady.class);
+                intent.putExtra("Score", score);
+                intent.putExtra("Object Id", goTV);
+
+                startActivity(intent);
+            }
+        });
+    }
+
     private void populateWoyListView() {
-        woyAdapter = new WoyAdapter(this ,mMyFbId);
+        woyAdapter = new WoyAdapter(this ,FaceBookFriends.mMyFbId);
         woyAdapter.loadObjects();
         mWoyListView.setAdapter(woyAdapter);
     }
@@ -143,28 +153,51 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void populateCompleteListView() {
-        completedGameAdapter = new CompletedGameAdapter(this, mMyFbId);
+        completedGameAdapter = new CompletedGameAdapter(this, FaceBookFriends.mMyFbId);
         completedGameAdapter.loadObjects();
         mCompletedGameListView.setAdapter(completedGameAdapter);
     }
 
 
-    protected class getFbDeets extends AsyncTask<Void, String, String>{
-        @Override
-        protected String doInBackground(Void... params) {
+    protected class getFbDeets extends AsyncTask<Void, Void, Void>{
 
+        private ProgressDialog dialog;
 
-            return FaceBookFriends.getMyFbId();
+        public getFbDeets(UserProfileActivity activity){
+            dialog = new ProgressDialog(activity);
         }
         @Override
-        protected void onPostExecute(String result){
+        protected void  onPreExecute(){
+            dialog.setMessage("Getting your games!");
+            dialog.show();
 
-            mMyFbId = result;
-            populateWoyListView();
-            populateWfoListView();
-            populateCompleteListView();
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            mMyFbId = FaceBookFriends.mMyFbId;
+            mMyFbName = FaceBookFriends.getMyFbName();
+            Log.v("getFbDeets() ", "Is Running");
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+            //Log.v("mMyFbId after the call ", mMyFbId);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            populateUI();
+            if(dialog.isShowing()){
+                dialog.dismiss();
+            }
         }
     }
+
+
 
 
 

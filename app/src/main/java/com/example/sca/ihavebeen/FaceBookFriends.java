@@ -45,7 +45,7 @@ public class FaceBookFriends {
                             mFBName = response.getJSONObject().getString("name");
 
 
-                            Log.v("My FB ID is: ", mFBName);
+                            Log.v("My FB Name is: ", mFBName);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
