@@ -1,8 +1,10 @@
-package com.example.sca.ihavebeen.util;
+package com.sca.ihavebeen;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.sca.ihavebeen.SystemUiHider;
 
 /**
  * A base implementation of {@link SystemUiHider}. Uses APIs available in all

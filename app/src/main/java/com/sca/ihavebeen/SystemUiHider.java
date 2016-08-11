@@ -1,4 +1,4 @@
-package com.example.sca.ihavebeen.util;
+package com.sca.ihavebeen;
 
 import android.app.Activity;
 import android.os.Build;

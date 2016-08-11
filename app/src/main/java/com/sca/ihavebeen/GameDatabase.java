@@ -1,4 +1,4 @@
-package com.example.sca.ihavebeen;
+package com.sca.ihavebeen;
 
 import android.content.Context;
 import android.database.Cursor;

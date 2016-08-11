@@ -1,4 +1,4 @@
-package com.example.sca.ihavebeen;
+package com.sca.ihavebeen;
 
 /**
  * Created by Tom Schinler on 7/3/2015.
@@ -6,16 +6,24 @@ package com.example.sca.ihavebeen;
 public class TicketSystem {
 
     // When Parse is set up get tickets from Parse User
-    private int tickets = 25;
+    private int tickets;
 
     public int getTickets() {
         return tickets;
     }
 
+    //TODO check to see if this is backwards
     public void setTickets(int tickets) {
         this.tickets = tickets;
     }
 
+
+    //First time install will get 25 tickets
+    //TODO Write function that gives first time install 25 tickets
+    public int newPlayerTickets() {
+        tickets = 25;
+        return tickets;
+    }
 
 
     // Costs 4 tickets to play the game
@@ -30,5 +38,4 @@ public class TicketSystem {
         return tickets;
     }
 
-    // For Premium version set up betting methods here
 }

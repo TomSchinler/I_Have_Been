@@ -30,10 +30,6 @@
     <string name="gameSubmitButton">Submit</string>
 
 
-
-
-
-
     <string name="verifiyStart">New Button</string>
     <string name="verifyStartMessage">Are you sure you want to start a new game with</string>
     <string name="title_activity_verify_start">No, I said, ARE YOU READY!!!!</string>
@@ -66,6 +62,16 @@
     <string name="you_failed_start_line">You have failed to figure out who I am.</string>
     <string name="new_Welcome_Text">WELCOME TO I HAVE BEEN!!</string>
     <string name="new_welcome_paragraph">Please log in and enjoy the game.</string>
+    <string name="number_of_wins_label">Number of wins:</string>
+    <string name="current_tickets_label">Current Tickets</string>
+    <string name="win_percentage_label">Win percentage:</string>
+    <string name="active_games_label">Active Games</string>
+    <string name="completed_games_label">Completed Games</string>
+    <string name="random_play_label">Random play</string>
+    <string name="users_profile_picture_CD">Users profile picture</string>
+    <string name="welcome_to">Welcome to:</string>
+    <string name="in_order_to_play_you_must_sign_in">In order to play you must sign in.</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
 
 
 </resources>

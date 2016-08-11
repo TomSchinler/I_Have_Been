@@ -1,10 +1,13 @@
-package com.example.sca.ihavebeen.util;
+package com.sca.ihavebeen;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.sca.ihavebeen.SystemUiHider;
+import com.sca.ihavebeen.SystemUiHiderBase;
 
 /**
  * An API 11+ implementation of {@link SystemUiHider}. Uses APIs available in
