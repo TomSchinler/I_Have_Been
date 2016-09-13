@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
@@ -29,19 +29,24 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
         android:name="android.support.multidex.MultiDexApplication">
-
-
-
         <activity android:name="com.sca.ihavebeen.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="com.sca.ihavebeen.NewUserProfile" />
-
-        <activity android:name="com.sca.ihavebeen.GameActivity"/>
+        <activity android:name="com.sca.ihavebeen.GameActivity" />
+        <activity
+            android:name="com.sca.ihavebeen.GameChoiceActivity"
+            android:label="@string/title_activity_game_choice"
+            android:parentActivityName="com.sca.ihavebeen.NewUserProfile"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sca.ihavebeen.NewUserProfile" />
+        </activity>
     </application>
 
 </manifest>

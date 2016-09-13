@@ -6,7 +6,15 @@ package com.sca.ihavebeen;
 public class TicketSystem {
 
     // When Parse is set up get tickets from Parse User
-    private int tickets;
+    private int tickets = 25;
+
+    private final static TicketSystem instance = new TicketSystem();
+
+    private TicketSystem() {}
+
+    public static TicketSystem getInstance() {
+        return instance;
+    }
 
     public int getTickets() {
         return tickets;
@@ -15,14 +23,6 @@ public class TicketSystem {
     //TODO check to see if this is backwards
     public void setTickets(int tickets) {
         this.tickets = tickets;
-    }
-
-
-    //First time install will get 25 tickets
-    //TODO Write function that gives first time install 25 tickets
-    public int newPlayerTickets() {
-        tickets = 25;
-        return tickets;
     }
 
 

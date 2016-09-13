@@ -41,8 +41,7 @@
         app:layout_constraintRight_toRightOf="@+id/activity_new_log_in"
         android:layout_marginEnd="16dp" />
 
-    <Button
-        android:text="@string/sign_in_with_google"
+    <com.google.android.gms.common.SignInButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/googleSignInButton"

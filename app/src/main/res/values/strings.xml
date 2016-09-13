@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">I Have Been</string>
 
-    <string name="parse_app_id">bjA0QqhyKabcRWWTUMYfOHNk8lPw1cL8XSQzwJpg</string>
-    <string name="parse_client_key">Or4rdadLABWiGO4KbjuDxdJca84wUpkjWcZompvi</string>
-
     <string name="HardCluePlaceHolderText">Hard Clue</string>
     <string name="MediumCluePlaceHolderText">Medium Clue</string>
     <string name="Easy1CluePlaceHolderText">Easy Clue 1</string>
@@ -72,6 +69,15 @@
     <string name="welcome_to">Welcome to:</string>
     <string name="in_order_to_play_you_must_sign_in">In order to play you must sign in.</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="title_activity_game_choice">GameChoiceActivity</string>
+    <string name="new_random_game">Random Game</string>
+    <string name="new_game_with_friends">Play your friends</string>
+    <string name="play_creators">Play Creators</string>
+    <string name="start_a_new_game_against_a_random_player">Start a new game against a random player</string>
+    <string name="notConnectedToSocial">You must connect with Facebook or Twitter to play your friends. Click here to sign in.</string>
+    <string name="start_new_friend_game_text">Start a new game against your friend</string>
+    <string name="try_the_creators">Congrats, you have earned the right to play the creators.  Go ahead, We dare you.</string>
+    <string name="cant_play_creators">You have not yet earned the right to play us.</string>
 
 
 </resources>
